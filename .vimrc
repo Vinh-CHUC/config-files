@@ -13,6 +13,9 @@ autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 set ffs=unix,dos,mac "Default file types
 set autochdir
 set wildignore+=*/build/*
+" Full path in statusline
+set statusline=%F
+" Status line always visible
 set laststatus=2
 
 
