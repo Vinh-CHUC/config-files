@@ -11,11 +11,11 @@ filetype indent on
 autocmd! BufWritePost ~/.vimrc source ~/.vimrc
 
 set ffs=unix,dos,mac "Default file types
-set autochdir
 set wildignore+=*/build/*
+" Tabline always visible
+set showtabline=2
 " Status line always visible
 set laststatus=2
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim User Interface
@@ -90,6 +90,7 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 set smarttab
+set softtabstop=4
 
 "Automatic word wrapping
 set textwidth=99
@@ -119,7 +120,14 @@ map <left> gT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_working_path_mode = 0
+
 " Pathogen
 execute pathogen#infect()
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_section_c = '%f'
