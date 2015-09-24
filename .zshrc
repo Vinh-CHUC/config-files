@@ -1,7 +1,16 @@
-# Created by newuser for 5.0.8
-export EXECUTOR=docker-machine
-eval "$(docker-machine env default)"
+############################
+# Customize to your needs...
+############################
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
 
-autoload compinit
-rm -f ~/.zcompdump; compinit
+prompt sorin
+
 export PATH="$HOME/.bin:$PATH"
+# recommended by brew doctor
+export PATH="/usr/local/bin:$PATH"
+
+export EXECUTOR=docker-machine
+eval "$(docker-machine env dev)"
+
+set -o vi
