@@ -17,6 +17,8 @@ set showtabline=2
 " Status line always visible
 set laststatus=2
 
+set clipboard=unnamed
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -123,6 +125,8 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_working_path_mode = 0
+let g:ctrlp_max_files = 0
+let g:ctrlp_custom_ignore = 'node_modules'
 
 " Pathogen
 execute pathogen#infect()
@@ -131,3 +135,6 @@ execute pathogen#infect()
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_section_c = '%f'
+
+" vim-jsx
+let g:jsx_ext_required = 0
