@@ -1,4 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/Users/Vinh/Code/C++/KCG_Assignment/xcode/Limit Order Book.xcodeproj'
-let g:netrw_dirhist_2='/Users/Vinh/Code/C++/KCG_Assignment/xcode/Limit Order Book.xcodeproj/project.xcworkspace/xcuserdata/Vinh.xcuserdatad'
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/Users/Vinh/Work/jump-ml/classifier/role_type/keywords_models'
