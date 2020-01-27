@@ -8,3 +8,5 @@
 [user]
 	email = vinh.chuc@gmail.com
 	name = Vinh Chuc
+[core]
+	editor = vim

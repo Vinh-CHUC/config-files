@@ -125,9 +125,12 @@ let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files = 0
-let g:ctrlp_custom_ignore = 'node_modules'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:32,results:32'
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_section_c = '%f'
+
+" Commentary
+autocmd FileType matlab setlocal commentstring=%\ %s
