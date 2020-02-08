@@ -1,42 +1,34 @@
-ARG BASE_CONTAINER=jupyter/base-notebook@sha256:a97a294194ab477be189b1208343786aa418fc0266caa5a1fc255a438ecbcb97
-FROM $BASE_CONTAINER
+FROM ubuntu:18.04
 
-USER root
+RUN apt update && apt -y install git build-essential software-properties-common curl
+RUN add-apt-repository -y ppa:deadsnakes/ppa
 
-RUN apt-get update
-RUN apt-get -y install git
+##############
+### Python ###
+##############
+RUN apt install -y python3.8
+RUN apt install -y python3.8-distutils
+RUN apt install -y python3.8-dev
+RUN ln -s /usr/bin/python3.8 /usr/bin/python
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python get-pip.py
 
-# Installing various packages, one docker RUN statement per package to maximise layer reuse/build time efficiency
-RUN pip install tensorflow==1.14.0
-RUN pip install tensorboard==1.14.0
-RUN pip install tensorflow-estimator==1.14.0
-RUN pip install tensorflow-hub==0.6.0
-RUN pip install tensorflow-metadata==0.14.0
-RUN pip install tensorflow-probability==0.7.0
-
-RUN pip install spacy==2.1.8
-RUN pip install nltk==3.3
-RUN pip install pandas==0.25.1
-RUN pip install scikit-learn==0.21.2
-RUN pip install bokeh
-RUN pip install holoviews
-RUN pip install eli5
-
-RUN pip install jupyter_contrib_nbextensions==0.5.1
+############
+### IDEs ###
+############
+RUN pip install streamlit
+RUN pip install notebook
+RUN pip install jupyter_contrib_nbextensions
 RUN jupyter contrib nbextension install --sys-prefix
 RUN pip install jupyter_nbextensions_configurator
 
-RUN python -m spacy download en_core_web_md
+### line_profiler
+RUN pip install Cython
+RUN git clone https://github.com/rkern/line_profiler.git
+RUN find line_profiler -name '*.pyx' -exec cython {} \;
+RUN cd line_profiler && pip install .
 
-RUN pip install seaborn==0.9.0
-RUN pip install matplotlib==3.1.1
-RUN pip install scipy==1.3.1
-RUN pip install pymc3==3.7
-RUN pip install pystan==2.19.0.0
-
-USER jovyan
-
-### IPYthon Config
+### IPython Config
 RUN ipython profile create
 COPY ipython_config.py /home/jovyan/.ipython/profile_default/ipython_config.py
 
@@ -51,4 +43,20 @@ RUN jupyter nbextension enable vim_binding/vim_binding
 RUN jupyter nbextension enable toc2/main
 
 RUN mkdir -p ~/.jupyter/custom
-COPY jupyter-custom.css /home/jovyan/.jupyter/custom/custom.css
+COPY jupyter-custom.css ~/.jupyter/custom/custom.css
+
+################
+### Packages ###
+################
+
+# Base scientific packages
+RUN pip install pandas numpy
+
+# Plotting
+RUN pip install bokeh holoviews
+
+# ML
+RUN pip install sklearn
+
+# Statistics
+RUN pip install pymc3
