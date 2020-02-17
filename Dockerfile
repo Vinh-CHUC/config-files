@@ -28,9 +28,12 @@ RUN git clone https://github.com/rkern/line_profiler.git
 RUN find line_profiler -name '*.pyx' -exec cython {} \;
 RUN cd line_profiler && pip install .
 
+RUN useradd -ms /bin/bash vinh
+USER vinh
+
 ### IPython Config
 RUN ipython profile create
-COPY ipython_config.py /home/jovyan/.ipython/profile_default/ipython_config.py
+COPY ipython_config.py ~/.ipython/profile_default/ipython_config.py
 
 ### Some more jupyter config to install extensions
 RUN mkdir -p $(jupyter --data-dir)/nbextensions && \
@@ -61,4 +64,4 @@ RUN pip install sklearn
 # Statistics
 RUN pip install pymc3
 
-WORKDIR /home/jovyan/workspace
+WORKDIR /home/vinh/workspace
