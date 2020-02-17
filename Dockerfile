@@ -61,4 +61,4 @@ RUN pip install sklearn
 # Statistics
 RUN pip install pymc3
 
-WORKDIR /root/workspace
+WORKDIR /home/jovyan/workspace
