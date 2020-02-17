@@ -33,7 +33,7 @@ USER vinh
 
 ### IPython Config
 RUN ipython profile create
-COPY ipython_config.py ~/.ipython/profile_default/ipython_config.py
+COPY ipython_config.py /home/vinh/.ipython/profile_default/ipython_config.py
 
 ### Some more jupyter config to install extensions
 RUN mkdir -p $(jupyter --data-dir)/nbextensions && \
@@ -45,8 +45,8 @@ RUN jupyter nbextensions_configurator enable --user
 RUN jupyter nbextension enable vim_binding/vim_binding
 RUN jupyter nbextension enable toc2/main
 
-RUN mkdir -p ~/.jupyter/custom
-COPY jupyter-custom.css ~/.jupyter/custom/custom.css
+RUN mkdir -p /home/vinh/.jupyter/custom
+COPY jupyter-custom.css /home/vinh/.jupyter/custom/custom.css
 
 ################
 ### Packages ###
