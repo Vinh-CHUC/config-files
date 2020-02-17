@@ -95,7 +95,7 @@ set smarttab
 set softtabstop=4
 
 "Automatic word wrapping
-set textwidth=119
+set textwidth=99
 set colorcolumn=+1
 
 "Control the way lines are broken (only affects visualization not text file)

@@ -50,7 +50,7 @@ COPY jupyter-custom.css ~/.jupyter/custom/custom.css
 ################
 
 # Base scientific packages
-RUN pip install pandas numpy
+RUN pip install pandas numpy sympy
 
 # Plotting
 RUN pip install bokeh holoviews
@@ -60,3 +60,5 @@ RUN pip install sklearn
 
 # Statistics
 RUN pip install pymc3
+
+WORKDIR /root/workspace
