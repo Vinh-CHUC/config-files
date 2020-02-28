@@ -134,3 +134,8 @@ let g:airline_section_c = '%f'
 
 " Commentary
 autocmd FileType matlab setlocal commentstring=%\ %s
+
+" jedi-vim
+let g:jedi#popup_on_dot = 0
+let g:jedi#use_splits_not_buffers = "bottom"
+let g:jedi#show_call_signatures = 2
