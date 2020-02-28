@@ -17,7 +17,7 @@
 	path = vim/pack/dist/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/pack/dist/start/ale"]
-	path = vim/pack/dist/start/ale
+	path = vim/pack/git-plugins/ale
 	url = https://github.com/dense-analysis/ale.git
 [submodule "prezto"]
 	path = prezto
