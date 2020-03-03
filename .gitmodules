@@ -25,3 +25,6 @@
 [submodule "vim/pack/git-plugins/start/jedi-vim"]
 	path = vim/pack/git-plugins/start/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim
+[submodule "tpm"]
+	path = tpm
+	url = https://github.com/tmux-plugins/tpm
