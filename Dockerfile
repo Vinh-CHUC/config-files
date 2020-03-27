@@ -57,6 +57,7 @@ RUN pip install pandas numpy sympy
 
 # Plotting
 RUN pip install bokeh holoviews
+RUN pip install altair vega_datasets
 
 # ML
 RUN pip install sklearn
