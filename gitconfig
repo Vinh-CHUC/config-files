@@ -10,3 +10,7 @@
 	name = Vinh Chuc
 [core]
 	editor = vim
+[status]
+    submoduleSummary = true
+[diff]
+    submodule = log
