@@ -1,0 +1,21 @@
+name: datascience
+channels:
+  - conda-forge
+dependencies:
+  - altair
+  - dash
+  - dash-bootstrap-components
+  - ipython
+  - jupyterlab=1.2.7
+  - nodejs
+  - scikit-learn
+  - pandas=1.0.2
+  - pip
+  - plotly
+  - pymc3
+  - python=3.8
+  - sympy
+  - vega_datasets
+  - pip:
+    - streamlit
+    - jupyter_http_over_ws
