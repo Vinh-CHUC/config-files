@@ -3,19 +3,20 @@ channels:
   - conda-forge
 dependencies:
   - altair
-  - dash
-  - dash-bootstrap-components
   - ipython
   - jupyterlab=1.2.7
   - nodejs
   - scikit-learn
   - pandas=1.0.2
   - pip
-  - plotly
   - pymc3
   - python=3.8
   - sympy
   - vega_datasets
   - pip:
+    - autopep8==1.5.2  # Auto formats, based on pycodestyle
+    - flake8==3.7.9  # Glues a bunch of stuff together
+    - pyflakes==2.2.0  # Actual errors
+    - pycodestyle==2.5.0  # PEP8 recommendations
     - streamlit
     - jupyter_http_over_ws
