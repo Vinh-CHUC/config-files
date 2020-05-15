@@ -1,8 +1,5 @@
 SHELL=zsh
 
-build-notebook:
-	docker build -t vinh/datascience:latest . 
-
 setup-vim:
 	ln -sf $(shell pwd)/vim ~/.vim
 	ln -sf $(shell pwd)/vimrc ~/.vimrc
@@ -17,7 +14,11 @@ setup-tmux-tpm:
 setup-git:
 	ln -sf $(shell pwd)/gitconfig ~/.gitconfig
 
+setup-ipython:
+	ipython profile create
+	ln -sf $(shell pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+
 setup-zsh:
 	./setupzsh.sh
 
-setup-all: setup-vim setup-tmux setup-git setup-zsh
+setup-all: setup-vim setup-tmux setup-git setup-ipython setup-zsh
