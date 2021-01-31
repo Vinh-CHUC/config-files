@@ -25,3 +25,6 @@
 [submodule "tpm"]
 	path = tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "vim/pack/git-plugins/vim-slime"]
+	path = vim/pack/git-plugins/start/vim-slime
+	url = https://github.com/jpalardy/vim-slime.git

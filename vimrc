@@ -134,10 +134,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline_section_c = '%f'
 
-" Commentary
-autocmd FileType matlab setlocal commentstring=%\ %s
-
-" jedi-vim
-let g:jedi#popup_on_dot = 0
-let g:jedi#use_splits_not_buffers = "bottom"
-let g:jedi#show_call_signatures = 2
+" Slime
+let g:slime_target = "tmux"
+let g:slime_default_config = {"socket_name": "default", "target_pane": ":.1"}
+let g:slime_dont_ask_default = 1
+xmap ff <Plug>SlimeRegionSend
+nmap ff <Plug>SlimeParagraphSend
