@@ -28,3 +28,6 @@
 [submodule "vim/pack/git-plugins/vim-slime"]
 	path = vim/pack/git-plugins/start/vim-slime
 	url = https://github.com/jpalardy/vim-slime.git
+[submodule "vim/pack/dist/start/vim-pythonsense"]
+	path = vim/pack/dist/start/vim-pythonsense
+	url = git@github.com:jeetsukumaran/vim-pythonsense.git
