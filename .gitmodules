@@ -31,3 +31,6 @@
 [submodule "vim/pack/dist/start/vim-pythonsense"]
 	path = vim/pack/dist/start/vim-pythonsense
 	url = git@github.com:jeetsukumaran/vim-pythonsense.git
+[submodule "vim/pack/dist/start/haskell-vim"]
+	path = vim/pack/dist/start/haskell-vim
+	url = https://github.com/neovimhaskell/haskell-vim.git
