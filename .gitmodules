@@ -1,6 +1,6 @@
 [submodule "vim/pack/dist/start/ctrlp.vim"]
 	path = vim/pack/dist/start/ctrlp.vim
-	url = git@github.com:ctrlpvim/ctrlp.vim.git
+	url = https://github.com:ctrlpvim/ctrlp.vim.git
 [submodule "vim/pack/dist/start/vim-airline"]
 	path = vim/pack/dist/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
@@ -30,7 +30,7 @@
 	url = https://github.com/jpalardy/vim-slime.git
 [submodule "vim/pack/dist/start/vim-pythonsense"]
 	path = vim/pack/dist/start/vim-pythonsense
-	url = git@github.com:jeetsukumaran/vim-pythonsense.git
+	url = https://github.com:jeetsukumaran/vim-pythonsense.git
 [submodule "vim/pack/dist/start/haskell-vim"]
 	path = vim/pack/dist/start/haskell-vim
 	url = https://github.com/neovimhaskell/haskell-vim.git
