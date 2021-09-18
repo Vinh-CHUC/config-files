@@ -6,7 +6,9 @@ setup-vim:
 
 setup-nvim:
 	mkdir -p ~/.config/nvim
-	ln -sf $(shell pwd)/init.vim ~/.config/nvim
+	ln -sf $(shell pwd)/init.vim ~/.config/nvim/init.vim
+	mkdir -p ~/.local/share
+	ln -sf $(shell pwd)/nvim ~/.local/share/nvim
 
 setup-tmux:
 	ln -sf $(shell pwd)/tmux.conf ~/.tmux.conf
