@@ -107,3 +107,10 @@ let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 xmap ff <Plug>SlimeRegionSend
 nmap ff <Plug>SlimeParagraphSend
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" LSP
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lua << EOF
+" require'lspconfig'.pyright.setup{}
+" EOF
