@@ -1,23 +1,17 @@
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocp
-set history=700
-
-filetype plugin on
-filetype indent on
-
 " When vimrc is edited, reload it
-autocmd! BufWritePost ~/.vimrc source ~/.vimrc
+autocmd! BufWritePost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim
 
 set ffs=unix,dos,mac "Default file types
 set wildignore+=*/build/* "Is also used by CtrlP
-
 " Tabline always visible
 set showtabline=2
 set clipboard=unnamed,unnamedplus
-" Status line always visible
-set laststatus=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim User Interface
@@ -25,21 +19,14 @@ set laststatus=2
 
 " Minimum amount of screen lines above or below the cursor
 set scrolloff=16
-set ruler "Always show current position
-set wildmenu "Turn on Wild menu
 set cmdheight=2 "The commandbar height
 set number
-
-" Set backspace config
-set backspace=eol,start,indent
 
 """"""""
 " Search
 """"""""
 set ignorecase "Case unsensitive search
 set smartcase "Make it sensitive if the search pattern contains upper case characters
-set hlsearch
-set incsearch "Show matches as search pattern is being typed
 
 set nolazyredraw "Do redraw during macros :)
 
@@ -76,7 +63,6 @@ set shiftwidth=4 " << >>
 set tabstop=4 "The actual tab key
 set softtabstop=4 "How many characters does a tab count for 
 set smartindent "Guesses for indents when using t a C like language
-set autoindent "Copy current line indent to subsequent new line
 
 set textwidth=99
 set colorcolumn=+1
@@ -101,6 +87,7 @@ map <left> gT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " CtrlP
 let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
 let g:ctrlp_map = '<c-p>'

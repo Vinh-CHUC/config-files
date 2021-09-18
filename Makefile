@@ -4,6 +4,10 @@ setup-vim:
 	ln -sf $(shell pwd)/vim ~/.vim
 	ln -sf $(shell pwd)/vimrc ~/.vimrc
 
+setup-nvim:
+	mkdir -p ~/.config/nvim
+	ln -sf $(shell pwd)/init.vim ~/.config/nvim
+
 setup-tmux:
 	ln -sf $(shell pwd)/tmux.conf ~/.tmux.conf
 
@@ -21,4 +25,4 @@ setup-ipython:
 setup-zsh:
 	./setupzsh.sh
 
-setup-all: setup-vim setup-tmux setup-git setup-ipython setup-zsh
+setup-all: setup-vim setup-nvim setup-tmux setup-git setup-ipython setup-zsh
