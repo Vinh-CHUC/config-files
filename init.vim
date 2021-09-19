@@ -91,6 +91,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'ctrlpvim/ctrlp.vim'
 
+    Plug 'dense-analysis/ale'
+
     Plug 'jpalardy/vim-slime'
     
     Plug 'neovim/nvim-lspconfig'

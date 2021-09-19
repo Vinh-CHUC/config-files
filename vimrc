@@ -108,6 +108,8 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'ctrlpvim/ctrlp.vim'
 
+    Plug 'dense-analysis/ale'
+
     Plug 'jpalardy/vim-slime'
     
     Plug 'preservim/nerdtree'
