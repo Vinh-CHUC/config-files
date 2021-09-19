@@ -111,7 +111,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'dense-analysis/ale'
 
     Plug 'jpalardy/vim-slime'
-    
+
     Plug 'preservim/nerdtree'
 
     Plug 'tpope/vim-commentary'
