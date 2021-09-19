@@ -6,6 +6,7 @@ autocmd! BufWritePost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim
 
 set ffs=unix,dos,mac "Default file types
 set wildignore+=*/build/* "Is also used by CtrlP
+
 " Tabline always visible
 set showtabline=2
 set clipboard=unnamed,unnamedplus
@@ -106,7 +107,6 @@ call plug#end()
 " NERDTree
 " Mirror the NERDTree before showing it. This makes it the same on all tabs.
 nnoremap <C-n> :NERDTreeToggle<CR>
-
 
 " CtrlP
 let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
