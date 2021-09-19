@@ -1,6 +1,3 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -87,6 +84,29 @@ map <left> gT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+call plug#begin('~/.local/share/nvim/plugged')
+    Plug 'airblade/vim-gitgutter'
+
+    Plug 'ctrlpvim/ctrlp.vim'
+
+    Plug 'jpalardy/vim-slime'
+    
+    Plug 'neovim/nvim-lspconfig'
+
+    Plug 'preservim/nerdtree'
+
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-fugitive'
+
+    Plug 'vim-airline/vim-airline'
+call plug#end()
+
+" NERDTree
+" Mirror the NERDTree before showing it. This makes it the same on all tabs.
+nnoremap <C-n> :NERDTreeToggle<CR>
+
 
 " CtrlP
 let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
