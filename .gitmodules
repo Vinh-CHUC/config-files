@@ -34,6 +34,3 @@
 [submodule "vim/pack/dist/start/haskell-vim"]
 	path = vim/pack/dist/start/haskell-vim
 	url = https://github.com/neovimhaskell/haskell-vim.git
-[submodule "nvim/site/pack/plugins/start/nvim-lspconfig"]
-	path = nvim/site/pack/plugins/start/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig.git
