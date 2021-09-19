@@ -134,5 +134,5 @@ nmap ff <Plug>SlimeParagraphSend
 " LSP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " lua << EOF
-" require'lspconfig'.pyright.setup{}
+" require'lspconfig'.pylsp.setup{}
 " EOF
