@@ -1,15 +1,17 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When vimrc is edited, reload it
-autocmd! BufWritePost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim
-
 set ffs=unix,dos,mac "Default file types
 set wildignore+=*/build/* "Is also used by CtrlP
 
 " Tabline always visible
 set showtabline=2
 set clipboard=unnamed,unnamedplus
+
+let mapleader = "["
+let localleader = "["
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim User Interface
@@ -72,12 +74,12 @@ set linebreak "Do not break in a middle of a word (this is only visual)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-imap jj <Esc>
+inoremap jk <Esc>
 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
 
 map <right> gt
 map <left> gT
@@ -93,7 +95,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'dense-analysis/ale'
 
+    Plug 'hhvm/vim-hack'
+
     Plug 'jpalardy/vim-slime'
+
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     
     Plug 'neovim/nvim-lspconfig'
 
@@ -114,7 +121,7 @@ nnoremap <C-n> :NERDTreeToggle<CR>
 let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_max_files = 0
+let g:ctrlp_max_files = 'a'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:32,results:32'
 
 " Airline
@@ -129,6 +136,17 @@ let g:slime_dont_ask_default = 1
 let g:slime_python_ipython = 1
 xmap ff <Plug>SlimeRegionSend
 nmap ff <Plug>SlimeParagraphSend
+
+" ALE
+let g:ale_completion_enabled = 1
+let g:ale_echo_msg_format = '[%linter%]% [code]% %s'
+let g:ale_linters = {'hack': ['hack']}
+let g:ale_fixers = {'hack': ['hackfmt']}
+set omnifunc=ale#completion#OmniFunc
+" Press `K` to view the type in the gutter
+nnoremap <silent> K :ALEHover<CR>
+" Type `gd` to go to definition
+nnoremap <silent> gd :ALEGoToDefinition<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LSP
