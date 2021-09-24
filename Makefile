@@ -12,7 +12,6 @@ setup-nvim:
 
 setup-tmux:
 	ln -sf $(shell pwd)/tmux.conf ~/.tmux.conf
-
 setup-tmux-tpm:
 	mkdir -p ~/.tmux/plugins
 	ln -sf $(shell pwd)/tpm ~/.tmux/plugins/tpm
@@ -26,5 +25,10 @@ setup-ipython:
 
 setup-zsh:
 	./setupzsh.sh
+	ln -sf $(shell pwd)/completion.zsh ~/.completion.zsh
 
-setup-all: setup-vim setup-nvim setup-tmux setup-git setup-ipython setup-zsh
+
+setup-bin:
+	ln -sf $(shell pwd)/bin ~/bin
+
+setup-all: setup-vim setup-nvim setup-tmux setup-tmux-tpm setup-git setup-zsh setup-bin
