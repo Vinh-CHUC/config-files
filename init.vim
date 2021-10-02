@@ -89,8 +89,6 @@ map <left> gT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.local/share/nvim/plugged')
-    Plug 'airblade/vim-gitgutter'
-
     Plug 'ctrlpvim/ctrlp.vim'
 
     Plug 'dense-analysis/ale'
@@ -101,6 +99,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
+
+    Plug 'mhinz/vim-signify'
     
     Plug 'neovim/nvim-lspconfig'
 
