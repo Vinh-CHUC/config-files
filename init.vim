@@ -101,6 +101,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'junegunn/fzf.vim'
 
     Plug 'mhinz/vim-signify'
+
+    Plug 'neoclide/coc.nvim', {'branch' : 'release'}
     
     Plug 'neovim/nvim-lspconfig'
 

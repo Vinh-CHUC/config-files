@@ -120,6 +120,8 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'mhinz/vim-signify'
 
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
     Plug 'preservim/nerdtree'
 
     Plug 'tpope/vim-commentary'
