@@ -26,7 +26,7 @@ setup-ipython:
 setup-zsh:
 	./setupzsh.sh
 	ln -sf $(shell pwd)/completion.zsh ~/.completion.zsh
-
+	ln -sf $(shell pwd)/extras.zsh ~/.extras.zsh
 
 setup-bin:
 	ln -sf $(shell pwd)/bin ~/bin
