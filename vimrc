@@ -107,8 +107,6 @@ map <left> gT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.vim/plugged')
-    Plug 'ctrlpvim/ctrlp.vim'
-
     Plug 'dense-analysis/ale'
 
     Plug 'hhvm/vim-hack'
@@ -131,16 +129,20 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
 call plug#end()
 
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(
+    \   <q-args>,
+    \   fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
 " NERDTree
 " Mirror the NERDTree before showing it. This makes it the same on all tabs.
 nnoremap <C-n> :NERDTreeToggle<CR>
 
 " CtrlP
-let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_working_path_mode = 'a'
-let g:ctrlp_max_files = 0
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:32,results:32'
+nnoremap <silent> <C-p> :Files<CR>
+
+" Signify
+cnoreabbrev Diff SignifyDiff
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
