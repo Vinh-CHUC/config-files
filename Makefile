@@ -29,6 +29,8 @@ setup-zsh:
 	ln -sf $(shell pwd)/extras.zsh ~/.extras.zsh
 
 setup-bin:
-	ln -sf $(shell pwd)/bin ~/bin
+	if [ $$(uname) = "Linux" ]; then  \
+		ln -sf $(shell pwd)/bin ~/bin; \
+	fi;
 
 setup-all: setup-vim setup-nvim setup-tmux setup-tmux-tpm setup-git setup-zsh setup-bin
