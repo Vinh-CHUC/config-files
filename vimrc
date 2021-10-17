@@ -17,7 +17,7 @@ set clipboard=unnamed,unnamedplus
 set laststatus=2
 
 let mapleader = "["
-let localleader = "["
+let maplocalleader = "["
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 

@@ -9,7 +9,7 @@ set showtabline=2
 set clipboard=unnamed,unnamedplus
 
 let mapleader = "["
-let localleader = "["
+let maplocalleader = "["
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
