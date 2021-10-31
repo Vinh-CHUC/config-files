@@ -9,7 +9,7 @@
 	email = vinh.chuc@gmail.com
 	name = Vinh Chuc
 [core]
-	editor = vim
+	editor = nvim
 [status]
     submoduleSummary = true
 [diff]
