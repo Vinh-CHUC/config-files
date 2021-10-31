@@ -1,0 +1,9 @@
+{
+  "languageserver": {
+    "erlang": {
+      "command": "/usr/local/bin/erlang_ls",
+      "rootPatterns": [".git"],
+      "filetypes": ["erlang"]
+    }
+  }
+}

@@ -99,8 +99,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'junegunn/fzf.vim'
 
     Plug 'mhinz/vim-signify'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    Plug 'neovim/nvim-lspconfig'
+    " Plug 'neovim/nvim-lspconfig'
 
     Plug 'preservim/nerdtree'
 
@@ -144,11 +145,43 @@ let g:ale_completion_enabled = 1
 let g:ale_echo_msg_format = '[%linter%]% [code]% %s'
 let g:ale_linters = {'hack': ['hack']}
 let g:ale_fixers = {'hack': ['hackfmt']}
-set omnifunc=ale#completion#OmniFunc
-" Press `K` to view the type in the gutter
-nnoremap <silent> K :ALEHover<CR>
-" Type `gd` to go to definition
-nnoremap <silent> gd :ALEGoToDefinition<CR>
+
+" COC - LSP
+" Tab to trigger completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nmap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> <leader>gt :call CocActionAsync('jumpDefinition', 'tabe')<CR>
+nnoremap <silent> <leader>gs :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " LSP

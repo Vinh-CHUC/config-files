@@ -7,6 +7,7 @@ setup-vim:
 setup-nvim:
 	mkdir -p ~/.config/nvim
 	ln -sf $(shell pwd)/init.vim ~/.config/nvim/init.vim
+	ln -sf $(shell pwd)/coc-settings.json ~/.config/nvim/coc-settings.json
 	mkdir -p ~/.local/share
 	ln -sf $(shell pwd)/nvim ~/.local/share/nvim
 
@@ -28,9 +29,4 @@ setup-zsh:
 	ln -sf $(shell pwd)/completion.zsh ~/.completion.zsh
 	ln -sf $(shell pwd)/extras.zsh ~/.extras.zsh
 
-setup-bin:
-	if [ $$(uname) = "Linux" ]; then  \
-		ln -sf $(shell pwd)/bin ~/bin; \
-	fi;
-
-setup-all: setup-vim setup-nvim setup-tmux setup-tmux-tpm setup-git setup-zsh setup-bin
+setup-all: setup-vim setup-nvim setup-tmux setup-tmux-tpm setup-git setup-zsh
