@@ -10,8 +10,47 @@ set clipboard=unnamed,unnamedplus
 
 let mapleader = "["
 let maplocalleader = "["
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap  <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap  <leader>sv :source $MYVIMRC<cr>
+
+if exists("+showtabline")
+     function MyTabLine()
+         let s = ''
+         let cur_tab_n = tabpagenr()
+
+         for tab_idx in range(tabpagenr('$'))
+             let buflist = tabpagebuflist(tab_idx + 1)
+             let winnr = tabpagewinnr(tab_idx + 1)
+
+             let filename = bufname(buflist[winnr - 1])
+             let filename = fnamemodify(filename, ':p:t')
+             if filename == ''
+                 let filename = '[No Name]'
+             endif
+
+             " Tab page number
+             let s .= '%' . (tab_idx + 1) . 'T'
+             let s .= ((tab_idx + 1) == cur_tab_n ? '%1*' : '%2*')
+             let s .= ' '
+             let s .= (tab_idx + 1) . '|'
+             let s .= ' %*'
+
+             " Highlight if current tab
+             let s .= ((tab_idx + 1) == cur_tab_n ? '%#TabLineSel#' : '%#TabLine#')
+
+             " Filename
+             let s .= filename
+
+             " Some padding at the end
+             let s .= '  '
+         endfor
+         let s .= '%T%#TabLineFill#%='
+         let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
+         return s
+     endfunction
+     set stal=2
+     set tabline=%!MyTabLine()
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim User Interface
@@ -89,6 +128,7 @@ map <left> gT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.local/share/nvim/plugged')
+    Plug 'christoomey/vim-tmux-navigator'
     Plug 'dense-analysis/ale'
 
     Plug 'hhvm/vim-hack'
@@ -127,11 +167,6 @@ nnoremap <silent> <C-p> :Files<CR>
 " Signify
 cnoreabbrev Diff SignifyDiff
 
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_section_c = '%f'
-
 " Slime
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": ":.1"}
@@ -143,7 +178,7 @@ nmap ff <Plug>SlimeParagraphSend
 " ALE
 let g:ale_completion_enabled = 1
 let g:ale_echo_msg_format = '[%linter%]% [code]% %s'
-let g:ale_linters = {'hack': ['hack']}
+let g:ale_linters = {'hack': ['hack'], 'erlang': []}
 let g:ale_fixers = {'hack': ['hackfmt']}
 
 " COC - LSP
