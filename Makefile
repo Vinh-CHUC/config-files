@@ -1,13 +1,8 @@
 SHELL=zsh
 
-setup-vim:
-	ln -sf $(shell pwd)/vim ~/.vim
-	ln -sf $(shell pwd)/vimrc ~/.vimrc
-
 setup-nvim:
 	mkdir -p ~/.config/nvim
 	ln -sf $(shell pwd)/init.vim ~/.config/nvim/init.vim
-	ln -sf $(shell pwd)/coc-settings.json ~/.config/nvim/coc-settings.json
 	mkdir -p ~/.local/share
 	ln -sf $(shell pwd)/nvim ~/.local/share/nvim
 
