@@ -115,10 +115,10 @@ set linebreak "Do not break in a middle of a word (this is only visual)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 inoremap jk <Esc>
 
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
 
 map <right> gt
 map <left> gT
@@ -129,19 +129,19 @@ map <left> gT
 
 call plug#begin('~/.local/share/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
-    Plug 'dense-analysis/ale'
-
-    Plug 'hhvm/vim-hack'
 
     Plug 'jpalardy/vim-slime'
-
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'jose-elias-alvarez/null-ls.nvim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
     Plug 'junegunn/fzf.vim'
 
     Plug 'mhinz/vim-signify'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    " Plug 'neovim/nvim-lspconfig'
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'}
+    Plug 'nvim-treesitter/nvim-treesitter'
 
     Plug 'preservim/nerdtree'
 
@@ -152,17 +152,16 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'vim-airline/vim-airline'
 call plug#end()
 
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(
-    \   <q-args>,
-    \   fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+" Telescope
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " NERDTree
 " Mirror the NERDTree before showing it. This makes it the same on all tabs.
 nnoremap <C-n> :NERDTreeToggle<CR>
-
-" CtrlP
-nnoremap <silent> <C-p> :Files<CR>
 
 " Signify
 cnoreabbrev Diff SignifyDiff
@@ -175,52 +174,61 @@ let g:slime_python_ipython = 1
 xmap ff <Plug>SlimeRegionSend
 nmap ff <Plug>SlimeParagraphSend
 
-" ALE
-let g:ale_completion_enabled = 1
-let g:ale_echo_msg_format = '[%linter%]% [code]% %s'
-let g:ale_linters = {'hack': ['hack'], 'erlang': []}
-let g:ale_fixers = {'hack': ['hackfmt']}
-
-" COC - LSP
-" Tab to trigger completion
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-nmap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> <leader>gt :call CocActionAsync('jumpDefinition', 'tabe')<CR>
-nnoremap <silent> <leader>gs :call CocActionAsync('jumpDefinition', 'vsplit')<CR>
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" LSP
+" Lua
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" lua << EOF
-" require'lspconfig'.pylsp.setup{}
-" EOF
+
+lua << EOF
+require('telescope').setup {
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+require("telescope").load_extension("fzf")
+
+-------------------
+-- NVIM LSP BEGIN -
+-------------------
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local opts = { noremap=true, silent=true }
+vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+end
+
+local servers = { "erlangls", "pyre", "pylsp", "hhvm"}
+for _, lsp in ipairs(servers) do
+  require("lspconfig")[lsp].setup {
+    on_attach = on_attach,
+  }
+end
+
+------------------
+-- NVIM LSP END --
+------------------
+EOF
