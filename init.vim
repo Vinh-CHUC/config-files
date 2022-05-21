@@ -13,45 +13,6 @@ let maplocalleader = "["
 nnoremap  <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap  <leader>sv :source $MYVIMRC<cr>
 
-if exists("+showtabline")
-     function MyTabLine()
-         let s = ''
-         let cur_tab_n = tabpagenr()
-
-         for tab_idx in range(tabpagenr('$'))
-             let buflist = tabpagebuflist(tab_idx + 1)
-             let winnr = tabpagewinnr(tab_idx + 1)
-
-             let filename = bufname(buflist[winnr - 1])
-             let filename = fnamemodify(filename, ':p:t')
-             if filename == ''
-                 let filename = '[No Name]'
-             endif
-
-             " Tab page number
-             let s .= '%' . (tab_idx + 1) . 'T'
-             let s .= ((tab_idx + 1) == cur_tab_n ? '%1*' : '%2*')
-             let s .= ' '
-             let s .= (tab_idx + 1) . '|'
-             let s .= ' %*'
-
-             " Highlight if current tab
-             let s .= ((tab_idx + 1) == cur_tab_n ? '%#TabLineSel#' : '%#TabLine#')
-
-             " Filename
-             let s .= filename
-
-             " Some padding at the end
-             let s .= '  '
-         endfor
-         let s .= '%T%#TabLineFill#%='
-         let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-         return s
-     endfunction
-     set stal=2
-     set tabline=%!MyTabLine()
-endif
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -131,18 +92,31 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
 
     Plug 'jpalardy/vim-slime'
-    Plug 'jose-elias-alvarez/null-ls.nvim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
     Plug 'junegunn/fzf.vim'
 
     Plug 'mhinz/vim-signify'
+
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/cmp-path'
+    Plug 'hrsh7th/cmp-cmdline'
+    " For vsnip users.
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
 
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-treesitter/nvim-treesitter'
 
+    Plug 'crispgm/nvim-tabline'
+
     Plug 'preservim/nerdtree'
+
+    Plug 'rafcamlet/nvim-luapad'
+    Plug 'tjdevries/nlua.nvim'
 
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
@@ -157,6 +131,9 @@ nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Autocompletion
+set completeopt=menu,menuone,noselect,longest
 
 " NERDTree
 " Mirror the NERDTree before showing it. This makes it the same on all tabs.
@@ -179,10 +156,88 @@ nmap ff <Plug>SlimeParagraphSend
 
 lua << EOF
 require('telescope')
+require('tabline').setup({})
+
+-------------------------
+-- Autocompletion BEGIN -
+-------------------------
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
+local cmp = require("cmp")
+cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif vim.fn["vsnip#available"](1) == 1 then
+            feedkey("<Plug>(vsnip-expand-or-jump)", "")
+          elseif has_words_before() then
+            cmp.complete()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+              feedkey("<Plug>(vsnip-jump-prev)", "")
+            end
+        end, { "i", "s" }),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+    }, 
+    {
+      { name = 'buffer' },
+    })
+  })
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    })
+})
+-----------------------
+-- Autocompletion END -
+-----------------------
 
 -------------------
 -- NVIM LSP BEGIN -
 -------------------
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local opts = { noremap=true, silent=true }
@@ -192,9 +247,6 @@ vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', op
 vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
 local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -209,13 +261,20 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local servers = { "erlangls", "pyre", "pylsp", "hhvm"}
+
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {
     on_attach = on_attach,
+    capabilities=capabilities
   }
 end
 
+require('nlua.lsp.nvim').setup(require('lspconfig'), {
+    cmd = {"/home/vinhchuc/bin/lua-language-server/bin/lua-language-server", "-E", "/home/vinhchuc/bin/lua-language-server/bin" .. "/main.lua"},
+    on_attach = on_attach,
+})
 ------------------
 -- NVIM LSP END --
 ------------------
