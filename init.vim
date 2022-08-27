@@ -107,6 +107,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'hrsh7th/vim-vsnip'
 
     Plug 'neovim/nvim-lspconfig'
+
+    Plug 'jose-elias-alvarez/null-ls.nvim'
+
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-treesitter/nvim-treesitter'
@@ -234,6 +237,14 @@ cmp.setup.cmdline(':', {
 -- Autocompletion END -
 -----------------------
 
+-- NULL-LS
+require("null-ls").setup({
+    sources = {
+        require("null-ls").builtins.diagnostics.flake8,
+        require("null-ls").builtins.formatting.black,
+    },
+})
+
 -------------------
 -- NVIM LSP BEGIN -
 -------------------
@@ -262,7 +273,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { "erlangls", "pyre", "pylsp", "hhvm"}
+local servers = { "erlangls", "pyright", "hhvm"}
 
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {
@@ -271,10 +282,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require('nlua.lsp.nvim').setup(require('lspconfig'), {
-    cmd = {"/home/vinhchuc/bin/lua-language-server/bin/lua-language-server", "-E", "/home/vinhchuc/bin/lua-language-server/bin" .. "/main.lua"},
-    on_attach = on_attach,
-})
 ------------------
 -- NVIM LSP END --
 ------------------
