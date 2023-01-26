@@ -1,5 +1,4 @@
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --no-ignore'
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/vinh/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
