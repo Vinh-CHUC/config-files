@@ -237,13 +237,6 @@ cmp.setup.cmdline(':', {
 -- Autocompletion END -
 -----------------------
 
--- NULL-LS
-require("null-ls").setup({
-    sources = {
-        require("null-ls").builtins.diagnostics.flake8,
-        require("null-ls").builtins.formatting.black,
-    },
-})
 
 -------------------
 -- NVIM LSP BEGIN -
@@ -282,6 +275,14 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- NULL-LS
+require("null-ls").setup({
+    on_attach = on_attach,
+    sources = {
+        require("null-ls").builtins.diagnostics.flake8,
+        require("null-ls").builtins.formatting.black,
+    }
+})
 ------------------
 -- NVIM LSP END --
 ------------------
