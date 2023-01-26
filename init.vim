@@ -88,7 +88,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'christoomey/vim-tmux-navigator'
 
     Plug 'jpalardy/vim-slime'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
+    Plug 'junegunn/fzf',
     Plug 'junegunn/fzf.vim'
 
     Plug 'mhinz/vim-signify'
