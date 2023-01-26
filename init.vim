@@ -36,13 +36,7 @@ set matchtime=2 "For 0.2 seconds
 set timeoutlen=200
 set foldcolumn=2
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Colours and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable
-
-set background=dark
-colorscheme desert
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Files,backups
@@ -119,6 +113,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'preservim/nerdtree'
 
     Plug 'rafcamlet/nvim-luapad'
+    Plug 'sainnhe/sonokai'
     Plug 'tjdevries/nlua.nvim'
 
     Plug 'tpope/vim-commentary'
@@ -127,6 +122,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'vim-airline/vim-airline'
 call plug#end()
+
+let g:sonokai_style = 'andromeda'
+let g:sonokai_better_performance = 1
+colorscheme sonokai
 
 " Telescope
 nnoremap <C-p> <cmd>Telescope find_files<cr>
