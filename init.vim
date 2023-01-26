@@ -124,8 +124,6 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-fugitive'
-
-    Plug 'vim-airline/vim-airline'
 call plug#end()
 
 let g:sonokai_style = 'andromeda'
