@@ -83,6 +83,8 @@ map <left> gT
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.local/share/nvim/plugged')
+    Plug 'arkav/lualine-lsp-progress'
+
     Plug 'christoomey/vim-tmux-navigator'
 
     Plug 'jpalardy/vim-slime'
@@ -105,6 +107,9 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'jose-elias-alvarez/null-ls.nvim'
 
     Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-lualine/lualine.nvim'
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'nvim-orgmode/orgmode'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-treesitter/nvim-treesitter'
 
@@ -158,7 +163,52 @@ nmap ff <Plug>SlimeParagraphSend
 
 lua << EOF
 require('telescope')
-require('tabline').setup({})
+require('lualine').setup {
+  extensions = {},
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { "filename" },
+    lualine_x = { "location" },
+    lualine_y = {},
+    lualine_z = {}
+  },
+  inactive_winbar = {},
+  options = {
+    always_divide_middle = true,
+    component_separators = {
+      left = "",
+      right = ""
+    },
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {}
+    },
+    globalstatus = false,
+    icons_enabled = true,
+    ignore_focus = {},
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000
+    },
+    section_separators = {
+      left = "",
+      right = ""
+    },
+    theme = "auto"
+  },
+  sections = {
+    lualine_a = { "mode" },
+    lualine_b = { "branch", "diff", "diagnostics" },
+    lualine_c = { "filename", "lsp_progress" },
+    lualine_x = { "encoding", "fileformat", "filetype" },
+    lualine_y = { "progress" },
+    lualine_z = { "location" }
+  },
+  tabline = {},
+  winbar = {}
+}
 
 -------------------------
 -- Autocompletion BEGIN -
