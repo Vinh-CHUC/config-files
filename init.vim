@@ -267,6 +267,10 @@ cmp.setup.cmdline(':', {
     })
 })
 
+-----------------------
+-- Autocompletion END -
+-----------------------
+
 --------------
 -- Org mode --
 --------------
@@ -328,10 +332,6 @@ require('orgmode').setup({
   org_agenda_files = {'~/org-files/agenda/*'},
   org_default_notes_file = '~/org-files/notes.org',
 })
-
------------------------
--- Autocompletion END -
------------------------
 
 -- Telescope
 local telescope = require('telescope')
