@@ -162,7 +162,6 @@ nmap ff <Plug>SlimeParagraphSend
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 lua << EOF
-require('telescope')
 require('lualine').setup {
   extensions = {},
   inactive_sections = {
