@@ -120,6 +120,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'rafcamlet/nvim-luapad'
     Plug 'sainnhe/sonokai'
+    Plug 'stevearc/aerial.nvim'
     Plug 'tjdevries/nlua.nvim'
 
     Plug 'tpope/vim-commentary'
