@@ -108,16 +108,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-lualine/lualine.nvim'
-    Plug 'kyazdani42/nvim-web-devicons'
     Plug 'nvim-orgmode/orgmode'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'}
+    Plug 'nvim-tree/nvim-web-devicons'
+    Plug 'nvim-tree/nvim-tree.lua'
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
     Plug 'crispgm/nvim-tabline'
-
-    Plug 'preservim/nerdtree'
 
     Plug 'rafcamlet/nvim-luapad'
     Plug 'sainnhe/sonokai'
