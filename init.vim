@@ -141,9 +141,10 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Autocompletion
 set completeopt=menu,menuone,noselect,longest
 
-" NERDTree
-" Mirror the NERDTree before showing it. This makes it the same on all tabs.
-nnoremap <C-n> :NERDTreeToggle<CR>
+" Nvim Tree
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+set termguicolors
 
 " Signify
 cnoreabbrev Diff SignifyDiff
