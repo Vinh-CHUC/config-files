@@ -347,6 +347,9 @@ telescope.setup {
 }
 telescope.load_extension("fzf")
 
+-- NVIM Tree
+require("nvim-tree").setup()
+
 -------------------
 -- NVIM LSP BEGIN -
 -------------------
@@ -381,7 +384,7 @@ for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {
     on_attach = on_attach,
     capabilities=capabilities
-  }
+}
 end
 
 -- NULL-LS
