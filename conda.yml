@@ -15,4 +15,5 @@ dependencies:
   - vega_datasets
   - pip:
     - flake8
+    - graphviz
     - streamlit
