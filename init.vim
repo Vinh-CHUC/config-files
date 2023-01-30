@@ -8,11 +8,6 @@ set wildignore+=*/build/* "Is also used by CtrlP
 set showtabline=2
 set clipboard=unnamed,unnamedplus
 
-let mapleader = "["
-let maplocalleader = "["
-nnoremap  <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap  <leader>sv :source $MYVIMRC<cr>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -163,6 +158,19 @@ nmap ff <Plug>SlimeParagraphSend
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 lua << EOF
+
+-- Leader keys
+vim.g.mapleader = "["
+vim.g.maplocalleader = "["
+
+------------------
+-- Key mappings --
+------------------
+
+-- init.lua
+vim.keymap.set("n", "<leader>ev", ":vsplit $MYVIMRC <cr>", {remap = false})
+vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC <cr>", {remap = false})
+
 require('lualine').setup {
   extensions = {},
   inactive_sections = {
