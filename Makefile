@@ -3,6 +3,7 @@ SHELL=zsh
 setup-nvim:
 	mkdir -p ~/.config/nvim
 	ln -sf $(shell pwd)/init.vim ~/.config/nvim/init.vim
+	ln -sf $(shell pwd)/nvim_lua ~/.config/nvim/lua
 	mkdir -p ~/.local/share
 	ln -sf $(shell pwd)/nvim ~/.local/share/nvim
 

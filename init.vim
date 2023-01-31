@@ -1,82 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set ffs=unix,dos,mac "Default file types
-set wildignore+=*/build/* "Is also used by CtrlP
-
-" Tabline always visible
-set showtabline=2
-set clipboard=unnamed,unnamedplus
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vim User Interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Minimum amount of screen lines above or below the cursor
-set scrolloff=16
-set cmdheight=2 "The commandbar height
-set number
-
-""""""""
-" Search
-""""""""
-set ignorecase "Case unsensitive search
-set smartcase "Make it sensitive if the search pattern contains upper case characters
-
-set nolazyredraw "Do redraw during macros :)
-
-set showmatch "Show matching bracets when cursor is on them
-set matchtime=2 "For 0.2 seconds
-
-set timeoutlen=200
-set foldcolumn=2
-
-syntax enable
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Files,backups
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, write to your files often !! Use Git !!
-set nobackup
-set nowb
-set noswapfile
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Text,tab,indent
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Converts TAB to spaces
-set expandtab 
-"How many spaces for (auto)indent
-set shiftwidth=4 " << >> 
-set tabstop=4 "The actual tab key
-set softtabstop=4 "How many characters does a tab count for 
-set smartindent "Guesses for indents when using t a C like language
-
-set textwidth=99
-set colorcolumn=+1
-
-"Automatic word wrapping
-set wrap
-set linebreak "Do not break in a middle of a word (this is only visual)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Key Mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-inoremap jk <Esc>
-
-nnoremap <C-j> <C-W>j
-nnoremap <C-k> <C-W>k
-nnoremap <C-h> <C-W>h
-nnoremap <C-l> <C-W>l
-
-map <right> gt
-map <left> gT
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 call plug#begin('~/.local/share/nvim/plugged')
     Plug 'arkav/lualine-lsp-progress'
 
@@ -134,16 +55,14 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" Autocompletion
-set completeopt=menu,menuone,noselect,longest
 
 " Nvim Tree
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
-set termguicolors
 
 " Signify
 cnoreabbrev Diff SignifyDiff
+
 
 " Slime
 let g:slime_target = "tmux"
@@ -158,18 +77,7 @@ nmap ff <Plug>SlimeParagraphSend
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 lua << EOF
-
--- Leader keys
-vim.g.mapleader = "["
-vim.g.maplocalleader = "["
-
-------------------
--- Key mappings --
-------------------
-
--- init.lua
-vim.keymap.set("n", "<leader>ev", ":vsplit $MYVIMRC <cr>", {remap = false})
-vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC <cr>", {remap = false})
+require('my_basic_config')
 
 require('lualine').setup {
   extensions = {},
