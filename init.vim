@@ -1,11 +1,3 @@
-" Telescope
-nnoremap <C-p> <cmd>Telescope find_files<cr>
-nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-
 " Nvim Tree
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
@@ -30,6 +22,7 @@ lua << EOF
 require('my_basic_config')
 require('my_plugins_config')
 require('my_colorscheme_config')
+require('my_telescope_config')
 
 require('lualine').setup {
   extensions = {},
