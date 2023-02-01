@@ -1,49 +1,3 @@
-call plug#begin('~/.local/share/nvim/plugged')
-    Plug 'arkav/lualine-lsp-progress'
-
-    Plug 'christoomey/vim-tmux-navigator'
-
-    Plug 'jpalardy/vim-slime'
-    Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
-    Plug 'junegunn/fzf.vim'
-
-    Plug 'mhinz/vim-signify'
-
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
-    " For vsnip users.
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
-
-    Plug 'neovim/nvim-lspconfig'
-
-    Plug 'jose-elias-alvarez/null-ls.nvim'
-
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-lualine/lualine.nvim'
-    Plug 'nvim-orgmode/orgmode'
-    Plug 'nvim-telescope/telescope.nvim'
-    Plug 'nvim-telescope/telescope-fzf-native.nvim', {'do': 'make'}
-    Plug 'nvim-tree/nvim-web-devicons'
-    Plug 'nvim-tree/nvim-tree.lua'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-
-    Plug 'crispgm/nvim-tabline'
-
-    Plug 'rafcamlet/nvim-luapad'
-    Plug 'sainnhe/sonokai'
-    Plug 'stevearc/aerial.nvim'
-    Plug 'tjdevries/nlua.nvim'
-
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-surround'
-    Plug 'tpope/vim-fugitive'
-call plug#end()
-
 let g:sonokai_style = 'andromeda'
 let g:sonokai_better_performance = 1
 colorscheme sonokai
@@ -78,6 +32,7 @@ nmap ff <Plug>SlimeParagraphSend
 
 lua << EOF
 require('my_basic_config')
+require('my_plugins_config')
 
 require('lualine').setup {
   extensions = {},

@@ -1,3 +1,4 @@
-nvim/plugged
+nvim/meta-vscode-exts
+nvim/telescope_history
 nvim/shada
-vim/plugged
+nvim/site/pack/packer/start/
