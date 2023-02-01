@@ -1,7 +1,3 @@
-let g:sonokai_style = 'andromeda'
-let g:sonokai_better_performance = 1
-colorscheme sonokai
-
 " Telescope
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <leader>fr <cmd>Telescope lsp_references<cr>
@@ -33,6 +29,7 @@ nmap ff <Plug>SlimeParagraphSend
 lua << EOF
 require('my_basic_config')
 require('my_plugins_config')
+require('my_colorscheme_config')
 
 require('lualine').setup {
   extensions = {},
