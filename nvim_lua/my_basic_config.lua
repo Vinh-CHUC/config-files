@@ -43,11 +43,13 @@ vim.o.swapfile=false
 ---------------------
 -- Tab/indentation --
 ---------------------
-local indentation = 4
 vim.o.expandtab=true  -- TABs to spaces
-vim.o.shiftwidth=indentation  -- << >>
-vim.o.tabstop=indentation  -- The width of an actual <Tab>
 vim.o.smartindent=true
+function set_indentation_options(indentation)
+    vim.o.shiftwidth=indentation  -- << >>
+    vim.o.tabstop=indentation  -- The width of an actual <Tab>
+end
+set_indentation_options(4)
 
 ----------------
 -- Text width -- 
