@@ -1,12 +1,3 @@
-" Signify
-cnoreabbrev Diff SignifyDiff
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Lua
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-lua << EOF
 require('my_basic_config')
 require('my_plugins_config')
 require('my_colorscheme_config')
@@ -261,5 +252,3 @@ require('aerial').setup({
 })
 -- You probably also want to set a keymap to toggle aerial
 vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
-
-EOF
