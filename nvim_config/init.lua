@@ -191,6 +191,7 @@ telescope.setup {
 }
 telescope.load_extension("fzf")
 
+require("neodev").setup()
 
 -------------------
 -- NVIM LSP BEGIN -
@@ -220,7 +221,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { "erlangls", "pyright", "hhvm"}
+local servers = { "erlangls", "pyright", "hhvm", "sumneko_lua"}
 
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {

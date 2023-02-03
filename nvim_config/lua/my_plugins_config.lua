@@ -3,6 +3,8 @@ return require('packer').startup(function(use)
 
     use 'christoomey/vim-tmux-navigator'
 
+    use 'folke/neodev.nvim'
+
     use 'jpalardy/vim-slime'
     use {'junegunn/fzf', run = function() vim.fn['fzf#install']() end}
     use 'junegunn/fzf.vim'
