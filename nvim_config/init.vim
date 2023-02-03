@@ -2,14 +2,6 @@
 cnoreabbrev Diff SignifyDiff
 
 
-" Slime
-let g:slime_target = "tmux"
-let g:slime_default_config = {"socket_name": "default", "target_pane": "{last}"}
-let g:slime_dont_ask_default = 1
-let g:slime_python_ipython = 1
-xmap ff <Plug>SlimeRegionSend
-nmap ff <Plug>SlimeParagraphSend
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lua
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -21,6 +13,7 @@ require('my_colorscheme_config')
 require('my_telescope_config')
 require('my_biggrep_commands')
 require('my_nvimtree_config')
+require('my_slime_config')
 
 require('lualine').setup {
   extensions = {},
