@@ -1,7 +1,3 @@
-" Nvim Tree
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
-
 " Signify
 cnoreabbrev Diff SignifyDiff
 
@@ -23,6 +19,8 @@ require('my_basic_config')
 require('my_plugins_config')
 require('my_colorscheme_config')
 require('my_telescope_config')
+require('my_biggrep_commands')
+require('my_nvimtree_config')
 
 require('lualine').setup {
   extensions = {},
@@ -209,8 +207,6 @@ telescope.setup {
 }
 telescope.load_extension("fzf")
 
--- NVIM Tree
-require("nvim-tree").setup()
 
 -------------------
 -- NVIM LSP BEGIN -
