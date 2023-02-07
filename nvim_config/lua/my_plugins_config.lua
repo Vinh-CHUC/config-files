@@ -4,6 +4,7 @@ return require('packer').startup(function(use)
     use 'christoomey/vim-tmux-navigator'
 
     use 'folke/neodev.nvim'
+    use 'folke/tokyonight.nvim'
 
     use 'jpalardy/vim-slime'
     use {'junegunn/fzf', run = function() vim.fn['fzf#install']() end}
@@ -37,7 +38,7 @@ return require('packer').startup(function(use)
     use 'crispgm/nvim-tabline'
 
     use 'rafcamlet/nvim-luapad'
-    use 'sainnhe/sonokai'
+
     use 'stevearc/aerial.nvim'
     use 'tjdevries/nlua.nvim'
 
