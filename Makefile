@@ -2,10 +2,10 @@ SHELL=zsh
 
 setup-nvim:
 	mkdir -p ~/.config
-	rm -f ~/.config/nvim
+	rm -rf ~/.config/nvim
 	ln -s $(shell pwd)/nvim_config ~/.config/nvim
 	mkdir -p ~/.local/share
-	rm -f ~/.local/share/nvim
+	rm -rf ~/.local/share/nvim
 	ln -s $(shell pwd)/nvim ~/.local/share/nvim
 
 setup-tmux:

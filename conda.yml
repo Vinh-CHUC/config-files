@@ -5,6 +5,8 @@ dependencies:
   - altair
   - conda-build
   - ipython
+  - jupyterlab
+  - jupytext
   - scikit-learn
   - pandas
   - pip
