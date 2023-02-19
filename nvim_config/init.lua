@@ -274,7 +274,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { "erlangls", "pyright", "hhvm", "sumneko_lua"}
+local servers = { "erlangls", "pyright", "hhvm", "sumneko_lua", "rust_analyzer"}
 
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {
