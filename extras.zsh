@@ -17,3 +17,6 @@ unset __conda_setup
 export PATH="$HOME/bin:$PATH"
 [ -f "$HOME/.cargo/env" ] && "$HOME/.cargo/env"
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
+## HomeBrew
+export PATH="/usr/local/bin:$PATH"
