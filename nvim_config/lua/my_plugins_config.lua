@@ -40,7 +40,6 @@ return require('packer').startup(function(use)
     use 'rafcamlet/nvim-luapad'
 
     use 'stevearc/aerial.nvim'
-    use 'tjdevries/nlua.nvim'
 
     use 'tpope/vim-commentary'
     use 'tpope/vim-surround'
