@@ -2,6 +2,7 @@ return require('packer').startup(function(use)
     use 'arkav/lualine-lsp-progress'
 
     use 'christoomey/vim-tmux-navigator'
+    use 'crispgm/nvim-tabline'
 
     use 'folke/neodev.nvim'
     use 'folke/tokyonight.nvim'
@@ -35,8 +36,6 @@ return require('packer').startup(function(use)
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter-textobjects'
 
-    use 'crispgm/nvim-tabline'
-
     use 'rafcamlet/nvim-luapad'
 
     use 'stevearc/aerial.nvim'
@@ -44,4 +43,6 @@ return require('packer').startup(function(use)
     use 'tpope/vim-commentary'
     use 'tpope/vim-surround'
     use 'tpope/vim-fugitive'
+
+    use 'wbthomason/packer.nvim'
 end)
