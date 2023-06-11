@@ -15,7 +15,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export PATH="$HOME/bin:$PATH"
-[ -f "$HOME/.cargo/env" ] && "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 ## HomeBrew
