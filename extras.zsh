@@ -20,3 +20,8 @@ export PATH="$HOME/bin:$PATH"
 
 ## HomeBrew
 export PATH="/usr/local/bin:$PATH"
+
+## Poetry
+export PATH="$HOME/.local/bin:$PATH"
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
