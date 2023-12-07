@@ -274,20 +274,29 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { "erlangls", "pyright", "hhvm", "lua_ls", "rust_analyzer", "hls"}
+local servers = { "erlangls", "hhvm", "lua_ls", "rust_analyzer", "hls"}
 
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {
     on_attach = on_attach,
     capabilities=capabilities
-}
+  }
 end
+
+require("lspconfig")["pyright"].setup {
+  on_attach = on_attach,
+  capabilities=capabilities,
+  handlers = {
+    ["textDocument/publishDiagnostics"] = function() end,
+  }
+}
 
 -- NULL-LS
 require("null-ls").setup({
     on_attach = on_attach,
     sources = {
-        require("null-ls").builtins.diagnostics.flake8,
+        require("null-ls").builtins.diagnostics.ruff,
+        require("null-ls").builtins.diagnostics.mypy,
         require("null-ls").builtins.formatting.black,
     }
 })
