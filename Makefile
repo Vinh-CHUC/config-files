@@ -1,6 +1,53 @@
 SHELL=zsh
+#################
+## Basic Tools ##
+#################
 
-# Dotfiles themselves
+## OSX
+install-osx-bins:
+	brew install bat fd font-hack-nerd-font fzf gh lua-language-server neovim python3 rg tmux wget
+	brew install --cask google-cloud-sdk
+
+install-osx-security:
+	brew install gnupg yubikey-personalization hopenpgp-tools ykman pinentry-mac
+
+## Steam deck
+
+## x-platforms
+setup-fzf-completions:
+	/usr/local/opt/fzf/install
+
+############
+## Python ##
+############
+install-python-poetry:
+	curl -sSL https://install.python-poetry.org | python3 -
+
+setup-python-poetry-completions:
+	mkdir ~/.zfunc
+	poetry completions zsh > ~/.zfunc/_poetry
+
+#############
+## Haskell ##
+#############
+install-haskell-ghcup:
+	curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | \
+		BOOTSTRAP_HASKELL_NONINTERACTIVE=1 \
+		BOOTSTRAP_HASKELL_INSTALL_STACK=1 \
+		BOOTSTRAP_HASKELL_INSTALL_HLS=1 \
+		sh
+
+##########
+## Rust ##
+##########
+install-rustup:
+	curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
+install-rust-analyzer:
+	rustup component add rust-analyzer
+
+##############
+## Dotfiles ##
+##############
 setup-nvim:
 	mkdir -p ~/.config
 	rm -rf ~/.config/nvim
