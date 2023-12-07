@@ -1,5 +1,6 @@
 SHELL=zsh
 
+# Dotfiles themselves
 setup-nvim:
 	mkdir -p ~/.config
 	rm -rf ~/.config/nvim
@@ -28,4 +29,4 @@ setup-zsh:
 	ln -sf $(shell pwd)/completion.zsh ~/.completion.zsh
 	ln -sf $(shell pwd)/extras.zsh ~/.extras.zsh
 
-setup-all: setup-nvim setup-tmux setup-tmux-tpm setup-git setup-ipython setup-zsh
+setup-dotfiles: setup-nvim setup-tmux setup-tmux-tpm setup-git setup-ipython setup-zsh
