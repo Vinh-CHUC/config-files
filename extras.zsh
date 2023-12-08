@@ -11,3 +11,4 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
+POETRY_VIRTUALENVS_IN_PROJECT=0
