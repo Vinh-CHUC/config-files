@@ -5,11 +5,16 @@ SHELL=zsh
 
 ## OSX
 install-osx-bins:
-	brew install bat fd font-hack-nerd-font fzf gh lua-language-server neovim python3 rg tmux wget
+	brew install bat eza fd font-hack-nerd-font fzf gh lua-language-server neovim python3 rg tmux wget
 	brew install --cask google-cloud-sdk
 
 install-osx-security:
 	brew install gnupg yubikey-personalization hopenpgp-tools ykman pinentry-mac
+
+install-osx-cloud:
+	brew tap hashicorp/tap
+	brew install hashicorp/tap/terraform hashicorp/tap/terraform-ls
+	brew install helm argocd awscli
 
 ## Steam deck
 

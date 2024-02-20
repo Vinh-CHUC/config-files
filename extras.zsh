@@ -12,3 +12,6 @@ export PATH="$HOME/.local/bin:$PATH"
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 export POETRY_VIRTUALENVS_IN_PROJECT=0
+
+## Go
+export PATH="$HOME/go/bin:$PATH"
