@@ -6,7 +6,7 @@ SHELL=zsh
 ## OSX
 install-osx-bins:
 	brew install bat eza fd font-hack-nerd-font fzf gh lua-language-server neovim python3 rg tmux wget
-	brew install --cask google-cloud-sdk
+	brew install fish
 
 install-osx-security:
 	brew install gnupg yubikey-personalization hopenpgp-tools ykman pinentry-mac
@@ -15,6 +15,7 @@ install-osx-cloud:
 	brew tap hashicorp/tap
 	brew install hashicorp/tap/terraform hashicorp/tap/terraform-ls
 	brew install helm argocd awscli
+	brew install --cask google-cloud-sdk
 
 ## Steam deck
 
@@ -80,6 +81,13 @@ setup-git:
 setup-ipython:
 	ipython profile create
 	ln -sf $(shell pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+
+setup-fish:
+	rm -rf ~/.config/fish
+	ln -s $(shell pwd)/fish ~/.config/fish
+	mkdir -p ~/.config/fish/conf.d
+	mkdir -p ~/.config/fish/completions
+	mkdir -p ~/.config/fish/functions
 
 setup-zsh:
 	./setupzsh.sh
