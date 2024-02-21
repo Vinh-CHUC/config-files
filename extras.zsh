@@ -1,5 +1,7 @@
 export FZF_DEFAULT_COMMAND='fd --type file --hidden --no-ignore'
 
+alias ll='eza -l'
+
 export PATH="$HOME/bin:$PATH"
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
