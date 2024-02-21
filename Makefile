@@ -5,7 +5,7 @@ SHELL=zsh
 
 ## OSX
 install-osx-bins:
-	brew install bat eza fd font-hack-nerd-font fzf gh lua-language-server neovim python3 rg tmux wget
+	brew install bat eza fd font-hack-nerd-font fzf gh lua-language-server neovim python3 rg starship tmux wget
 	brew install fish
 
 install-osx-security:
@@ -88,6 +88,10 @@ setup-fish:
 	mkdir -p ~/.config/fish/conf.d
 	mkdir -p ~/.config/fish/completions
 	mkdir -p ~/.config/fish/functions
+
+setup-starship:
+	rm -rf ~/.config/starship.toml
+	ln -s $(shell pwd)/starship.toml ~/.config/
 
 setup-zsh:
 	./setupzsh.sh
