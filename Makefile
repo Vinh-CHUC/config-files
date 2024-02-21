@@ -69,6 +69,11 @@ setup-tmux-tpm:
 	mkdir -p ~/.tmux/plugins
 	ln -sf $(shell pwd)/tpm ~/.tmux/plugins/tpm
 
+setup-zellij:
+	mkdir -p ~/.config
+	rm -rf ~/.config/zellij
+	ln -s $(shell pwd)/zellij ~/.config/zellij
+
 setup-git:
 	ln -sf $(shell pwd)/gitconfig ~/.gitconfig
 
