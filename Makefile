@@ -5,7 +5,7 @@ SHELL=zsh
 
 ## OSX
 install-osx-bins:
-	brew install bat eza fd font-hack-nerd-font fzf gh lua-language-server neovim python3 rg starship tmux wget
+	brew install bat eza fd font-hack-nerd-font fzf gh gitui lua-language-server neovim python3 rg starship tmux wget
 	brew install fish
 
 install-osx-security:
@@ -77,6 +77,11 @@ setup-zellij:
 
 setup-git:
 	ln -sf $(shell pwd)/gitconfig ~/.gitconfig
+
+setup-gitui:
+	mkdir -p ~/.config
+	rm -rf ~/.config/gitui
+	ln -s $(shell pwd)/gitui ~/.config
 
 setup-ipython:
 	ipython profile create
