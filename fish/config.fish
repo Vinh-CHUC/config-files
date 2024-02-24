@@ -1,5 +1,7 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
+
+    # Basics
     fish_vi_key_bindings
     starship init fish | source
 
@@ -21,6 +23,7 @@ if status is-interactive
         test -d $p; and fish_add_path $p
     end
 
+    # Misc
     set -x FZF_DEFAULT_COMMAND 'fd --type file --hidden --no-ignore'
     set -x POETRY_VIRTUALENVS_IN_PROJECT 0
 end
