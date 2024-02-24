@@ -12,7 +12,8 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 truncation_length = 5
 truncation_symbol = '…/'
 
-
+[kubernetes]
+disabled = false
 
 [memory_usage]
 disabled = false
@@ -26,7 +27,8 @@ disabled = false
 # Disabled modules
 [aws]
 disabled = true
-[gcloud]
-disabled = true
 [git_metrics]
 disabled = true
+[gcloud]
+disabled = true
+
