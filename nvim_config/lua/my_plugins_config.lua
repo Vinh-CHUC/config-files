@@ -42,6 +42,14 @@ return require('packer').startup(function(use)
 
     use 'stevearc/aerial.nvim'
 
+    use {
+    "ThePrimeagen/refactoring.nvim",
+        requires = {
+            {"nvim-lua/plenary.nvim"},
+            {"nvim-treesitter/nvim-treesitter"}
+        }
+    }
+
     use 'tpope/vim-commentary'
     use 'tpope/vim-surround'
     use 'tpope/vim-fugitive'

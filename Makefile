@@ -29,9 +29,9 @@ setup-fzf-completions:
 install-python-poetry:
 	curl -sSL https://install.python-poetry.org | python3 -
 
+## Note these are already checked-in
 setup-python-poetry-completions:
-	mkdir ~/.zfunc
-	poetry completions zsh > ~/.zfunc/_poetry
+	poetry completions fish > ~/.config/fish/completions/poetry.fish
 
 #############
 ## Haskell ##
