@@ -43,6 +43,12 @@ install-haskell-ghcup:
 		BOOTSTRAP_HASKELL_INSTALL_HLS=1 \
 		sh
 
+###########
+## Idris ##
+###########
+install-osx-idris2:
+	brew install idris2
+
 ##########
 ## Rust ##
 ##########
