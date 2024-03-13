@@ -40,6 +40,8 @@ return require('packer').startup(function(use)
 
     use 'rafcamlet/nvim-luapad'
 
+    use {'ShinKage/idris2-nvim', requires = {'neovim/nvim-lspconfig', 'MunifTanjim/nui.nvim'}}
+
     use 'stevearc/aerial.nvim'
 
     use {

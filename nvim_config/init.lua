@@ -283,6 +283,8 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+require('idris2').setup({})
+
 -- NULL-LS
 require("null-ls").setup({
     on_attach = on_attach,
