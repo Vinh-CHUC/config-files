@@ -47,7 +47,9 @@ install-haskell-ghcup:
 ## Idris ##
 ###########
 install-osx-idris2:
-	brew install idris2
+	brew install chezscheme idris2
+	# Seems broken atm...
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/stefan-hoeck/idris2-pack/main/install.bash)"
 
 ##########
 ## Rust ##

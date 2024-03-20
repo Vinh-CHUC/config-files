@@ -13,8 +13,6 @@ return require('packer').startup(function(use)
     use {'junegunn/fzf', run = function() vim.fn['fzf#install']() end}
     use 'junegunn/fzf.vim'
 
-    use 'mhinz/vim-signify'
-
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'

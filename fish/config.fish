@@ -18,6 +18,7 @@ if status is-interactive
         $HOME/.cargo/bin \
         $HOME/.ghcup/bin \
         $HOME/.cabal/bin \
+        $HOME/.pack/bin \
         $HOME/go/bin
     for p in $PATHS
         test -d $p; and fish_add_path $p

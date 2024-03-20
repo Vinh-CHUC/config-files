@@ -322,3 +322,18 @@ vim.keymap.set("n", "<leader>rI", function() require('refactoring').refactor('In
 vim.keymap.set({ "n", "x" }, "<leader>ri", function() require('refactoring').refactor('Inline Variable') end)
 vim.keymap.set("n", "<leader>rb", function() require('refactoring').refactor('Extract Block') end)
 vim.keymap.set("n", "<leader>rbf", function() require('refactoring').refactor('Extract Block To File') end)
+
+-- Idris2
+local idris2_on_attach = function(client, bufnr)
+    vim.api.nvim_set_keymap('n', '<leader>cs', "<cmd>lua require('idris2.code_action').case_split()<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<leader>ac', "<cmd>lua require('idris2.code_action').add_clause()<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<leader>es', "<cmd>lua require('idris2.code_action').expr_search()<CR>", opts)
+    vim.api.nvim_set_keymap('n', '<leader>cd', "<cmd>lua require('idris2.code_action').generate_def()<CR>", opts)
+    on_attach(client, bufnr)
+end
+require('idris2').setup ({
+    server = {
+        on_attach = idris2_on_attach,
+        capabilities=capabilities
+    }
+})
