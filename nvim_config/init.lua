@@ -274,7 +274,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { "erlangls", "hhvm", "lua_ls", "rust_analyzer", "hls", "pyright", "gopls", "terraformls"}
+local servers = { "erlangls", "hhvm", "lua_ls", "rust_analyzer", "hls", "pyright", "gopls", "terraformls", "ruff_lsp"}
 
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {
@@ -286,11 +286,11 @@ end
 require('idris2').setup({})
 
 -- NULL-LS
-require("null-ls").setup({
+local null_ls = require("null-ls")
+null_ls.setup({
     on_attach = on_attach,
     sources = {
-        require("null-ls").builtins.diagnostics.ruff,
-        require("null-ls").builtins.formatting.black,
+        null_ls.builtins.formatting.black,
     }
 })
 ------------------
