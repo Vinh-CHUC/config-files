@@ -283,8 +283,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require('idris2').setup({})
-
 -- NULL-LS
 local null_ls = require("null-ls")
 null_ls.setup({
@@ -324,16 +322,13 @@ vim.keymap.set("n", "<leader>rb", function() require('refactoring').refactor('Ex
 vim.keymap.set("n", "<leader>rbf", function() require('refactoring').refactor('Extract Block To File') end)
 
 -- Idris2
-local idris2_on_attach = function(client, bufnr)
-    vim.api.nvim_set_keymap('n', '<leader>cs', "<cmd>lua require('idris2.code_action').case_split()<CR>", opts)
-    vim.api.nvim_set_keymap('n', '<leader>ac', "<cmd>lua require('idris2.code_action').add_clause()<CR>", opts)
-    vim.api.nvim_set_keymap('n', '<leader>es', "<cmd>lua require('idris2.code_action').expr_search()<CR>", opts)
-    vim.api.nvim_set_keymap('n', '<leader>cd', "<cmd>lua require('idris2.code_action').generate_def()<CR>", opts)
-    on_attach(client, bufnr)
-end
+vim.api.nvim_create_user_command("CaseSplit", function() require('idris2.code_action').case_split() end, {})
+vim.api.nvim_create_user_command("AddClause", function() require('idris2.code_action').add_clause() end, {})
+vim.api.nvim_create_user_command("ExprSearch", function() require('idris2.code_action').expr_search() end, {})
+vim.api.nvim_create_user_command("GenDef", function() require('idris2.code_action').generate_def() end, {})
 require('idris2').setup ({
     server = {
-        on_attach = idris2_on_attach,
+        on_attach = on_attach,
         capabilities=capabilities
     }
 })
