@@ -8,7 +8,7 @@ if status is-interactive
     # Abbreviations
     abbr gsf 'git st --porcelain | fzf'
     abbr glf "git log --pretty=format:'%h %an %ad %s' --date=short | fzf"
-    abbr ll 'eza -l'
+    abbr ls 'eza -ls time'
 
     # Paths
     set PATHS \
