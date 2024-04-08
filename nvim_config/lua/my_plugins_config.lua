@@ -22,7 +22,10 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
 
+    use 'lark-parser/vim-lark-syntax'
+
     use 'neovim/nvim-lspconfig'
+
 
     use 'nvimtools/none-ls.nvim'
 
