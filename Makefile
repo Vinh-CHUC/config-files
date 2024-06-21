@@ -17,7 +17,8 @@ install-osx-cloud:
 	brew install helm argocd awscli
 	brew install --cask google-cloud-sdk
 
-## Steam deck
+install-osx-cpp:
+	brew install cmake llvm
 
 ## x-platforms
 setup-fzf-completions:
