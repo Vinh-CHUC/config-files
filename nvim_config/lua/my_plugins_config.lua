@@ -1,4 +1,5 @@
 return require('packer').startup(function(use)
+    use 'airblade/vim-gitgutter'
     use 'arkav/lualine-lsp-progress'
 
     use 'crispgm/nvim-tabline'
