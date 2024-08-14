@@ -1,8 +1,14 @@
 return require('packer').startup(function(use)
     use 'arkav/lualine-lsp-progress'
 
-    use 'christoomey/vim-tmux-navigator'
     use 'crispgm/nvim-tabline'
+
+    use {
+        'dynamotn/Navigator.nvim',
+        config = function()
+            require('Navigator').setup()
+        end
+    }
 
     use 'folke/neodev.nvim'
     use 'folke/tokyonight.nvim'

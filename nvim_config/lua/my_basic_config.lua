@@ -72,10 +72,14 @@ vim.keymap.set("i", "jk", "<Esc>", {remap = false})
 -- Simpler movement
 vim.keymap.set("", "<right>", "gt")
 vim.keymap.set("", "<left>", "gT")
-vim.keymap.set("n", "<C-j>", "<C-W>j", {remap = false})
-vim.keymap.set("n", "<C-k>", "<C-W>k", {remap = false})
-vim.keymap.set("n", "<C-h>", "<C-W>h", {remap = false})
-vim.keymap.set("n", "<C-l>", "<C-W>l", {remap = false})
+-- vim.keymap.set("n", "<C-j>", "<C-W>j", {remap = false})
+-- vim.keymap.set("n", "<C-k>", "<C-W>k", {remap = false})
+-- vim.keymap.set("n", "<C-h>", "<C-W>h", {remap = false})
+-- vim.keymap.set("n", "<C-l>", "<C-W>l", {remap = false})
+vim.keymap.set({'n', 't'}, '<C-h>', '<CMD>NavigatorLeft<CR>')
+vim.keymap.set({'n', 't'}, '<C-l>', '<CMD>NavigatorRight<CR>')
+vim.keymap.set({'n', 't'}, '<C-k>', '<CMD>NavigatorUp<CR>')
+vim.keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
 
 -- Leader keys
 vim.g.mapleader = "["
