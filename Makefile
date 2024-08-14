@@ -5,7 +5,7 @@ SHELL=zsh
 
 ## OSX
 install-osx-bins:
-	brew install bat eza fd font-hack-nerd-font fzf gh gitui lua-language-server neovim python3 rg starship tmux wget
+	brew install bat eza fd font-hack-nerd-font fzf gh gitui lua-language-server neovim python3 rg starship tmux wget zellij
 	brew install fish
 
 install-osx-security:
@@ -18,7 +18,7 @@ install-osx-cloud:
 	brew install --cask google-cloud-sdk
 
 install-osx-cpp:
-	brew install cmake llvm
+	brew install clang-format cmake llvm
 
 ## x-platforms
 setup-fzf-completions:
