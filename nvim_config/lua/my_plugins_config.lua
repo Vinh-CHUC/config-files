@@ -16,6 +16,8 @@ return require('packer').startup(function(use)
 
     use 'ggandor/leap.nvim'
 
+    use 'imsnif/kdl.vim'
+
     use 'jpalardy/vim-slime'
     use {'junegunn/fzf', run = function() vim.fn['fzf#install']() end}
     use 'junegunn/fzf.vim'
