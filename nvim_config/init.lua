@@ -274,7 +274,7 @@ local on_attach = function(client, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { "erlangls", "hhvm", "lua_ls", "rust_analyzer", "hls", "pyright", "gopls", "terraformls", "ruff_lsp", "clangd"}
+local servers = { "erlangls", "hhvm", "lua_ls", "rust_analyzer", "hls", "pyright", "gopls", "terraformls", "ruff_lsp"}
 
 for _, lsp in ipairs(servers) do
   require("lspconfig")[lsp].setup {
@@ -282,6 +282,12 @@ for _, lsp in ipairs(servers) do
     capabilities=capabilities
   }
 end
+
+require("lspconfig")["clangd"].setup{
+  cmd = { "clangd", "--clang-tidy"},
+  on_attach = on_attach,
+  capabilities=capabilities
+}
 
 -- NULL-LS
 local null_ls = require("null-ls")

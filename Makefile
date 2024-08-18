@@ -18,7 +18,7 @@ install-osx-cloud:
 	brew install --cask google-cloud-sdk
 
 install-osx-cpp:
-	brew install clang-format cmake llvm
+	brew install bazelisk clang-format cmake llvm
 
 ## x-platforms
 setup-fzf-completions:
