@@ -171,6 +171,8 @@ keybinds clear-defaults=true {
                 payload "right";
             };
         }
+        bind "Alt Left" { GoToPreviousTab; }
+        bind "Alt Right" { GoToNextTab; }
         bind "Alt g" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
         bind "Alt n" { NewPane; }
