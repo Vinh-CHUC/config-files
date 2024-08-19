@@ -1,6 +1,5 @@
-SHELL=zsh
 #################
-## Basic Tools ##
+## OS Specific ##
 #################
 
 ## OSX
@@ -20,9 +19,27 @@ install-osx-cloud:
 install-osx-cpp:
 	brew install bazelisk clang-format cmake llvm
 
-## x-platforms
+## Pocket Reform
+install-linux-cargo-pkgs:
+	cargo install -f --locked gitui kanata zellij
+
+install-linux-starship:
+	curl -sS https://starship.rs/install.sh | sh
+
+install-linux-bins:
+	# Neovim build dependencies
+	apt install ninja-build gettext cmake unzip curl build-essential
+	apt install bat build-essential fd-find eza fish git ripgrep upower xclip
+
+##########
+## Misc ##
+##########
 setup-fzf-completions:
 	/usr/local/opt/fzf/install
+
+setup-kanata:
+	cp keyboards/kanata/99-uinput.rules /etc/udev/rules.d/
+	cp keyboards/kanata/uinput.conf /etc/modules-load.d/
 
 ############
 ## Python ##
@@ -64,39 +81,6 @@ install-rust-analyzer:
 ##############
 ## Dotfiles ##
 ##############
-setup-nvim:
-	mkdir -p ~/.config
-	rm -rf ~/.config/nvim
-	ln -s $(shell pwd)/nvim_config ~/.config/nvim
-	mkdir -p ~/.local/share
-	rm -rf ~/.local/share/nvim
-	ln -s $(shell pwd)/nvim ~/.local/share/nvim
-
-setup-tmux:
-	ln -sf $(shell pwd)/tmux.conf ~/.tmux.conf
-
-setup-tmux-tpm:
-	rm -rf ~/.tmux/plugins
-	mkdir -p ~/.tmux/plugins
-	ln -sf $(shell pwd)/tpm ~/.tmux/plugins/tpm
-
-setup-zellij:
-	mkdir -p ~/.config
-	rm -rf ~/.config/zellij
-	ln -s $(shell pwd)/zellij ~/.config/zellij
-
-setup-git:
-	ln -sf $(shell pwd)/gitconfig ~/.gitconfig
-
-setup-gitui:
-	mkdir -p ~/.config
-	rm -rf ~/.config/gitui
-	ln -s $(shell pwd)/gitui ~/.config
-
-setup-ipython:
-	ipython profile create
-	ln -sf $(shell pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
-
 setup-fish:
 	rm -rf ~/.config/fish
 	ln -s $(shell pwd)/fish ~/.config/fish
@@ -107,9 +91,42 @@ setup-fish:
 setup-fisher:
 	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
+setup-git:
+	ln -sf $(shell pwd)/gitconfig ~/.gitconfig
+	mkdir -p ~/.config
+	rm -rf ~/.config/gitui
+	ln -s $(shell pwd)/gitui ~/.config
+
+setup-ipython:
+	ipython profile create
+	ln -sf $(shell pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+
+setup-nvim:
+	mkdir -p ~/.config
+	rm -rf ~/.config/nvim
+	ln -s $(shell pwd)/nvim_config ~/.config/nvim
+	mkdir -p ~/.local/share
+	rm -rf ~/.local/share/nvim
+	ln -s $(shell pwd)/nvim ~/.local/share/nvim
+
 setup-starship:
 	rm -rf ~/.config/starship.toml
 	ln -s $(shell pwd)/starship.toml ~/.config/
+
+setup-tmux:
+	ln -sf $(shell pwd)/tmux.conf ~/.tmux.conf
+
+setup-zellij:
+	mkdir -p ~/.config
+	rm -rf ~/.config/zellij
+	ln -s $(shell pwd)/zellij ~/.config/zellij
+
+setup-sway-waybar:
+	mkdir -p ~/.config/kanata
+	ln -sf $(shell pwd)/keyboards/kanata/toggle.sh ~/.config/kanata/
+	ln -sf $(shell pwd)/keyboards/kanata/pocket-reform.kbd ~/.config/kanata/
+	ln -sf $(shell pwd)/desktop/sway/config ~/.config/sway/config
+	ln -sf $(shell pwd)/desktop/waybar/config ~/.config/waybar/config
 
 setup-zsh:
 	./setupzsh.sh
