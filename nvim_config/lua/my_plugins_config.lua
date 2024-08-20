@@ -5,7 +5,7 @@ return require('packer').startup(function(use)
     use 'crispgm/nvim-tabline'
 
     use {
-        'dynamotn/Navigator.nvim',
+        'Vinh-CHUC/Navigator.nvim',
         config = function()
             require('Navigator').setup()
         end
