@@ -1,7 +1,3 @@
-[submodule "prezto"]
-	path = prezto
-	url = https://github.com/Vinh-CHUC/prezto.git
-    branch = master
 [submodule "tpm"]
 	path = tpm
 	url = https://github.com/tmux-plugins/tpm
