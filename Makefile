@@ -19,7 +19,9 @@ install-osx-cloud:
 install-osx-cpp:
 	brew install bazelisk clang-format cmake llvm
 
-## Pocket Reform
+###########
+## Linux ##
+###########
 install-linux-cargo-pkgs:
 	cargo install -f --locked gitui kanata zellij
 
@@ -28,18 +30,25 @@ install-linux-starship:
 
 install-linux-bins:
 	# Neovim build dependencies
-	apt install ninja-build gettext cmake unzip curl build-essential
-	apt install bat build-essential fd-find eza fish git ripgrep upower xclip
+	apt install ninja-build gettext cmake make unzip curl build-essential
+	apt install bat build-essential fd-find fzf eza fish git ripgrep
+	# GUI
+	apt install alacritty foot mesa-utils sway upower xclip waybar
+	# Security related
+	apt install fuse pinentry-tty scdaemon
+
+## MNT Pocket Reform
+setup-kanata:
+	cp keyboards/kanata/99-uinput.rules /etc/udev/rules.d/
+	cp keyboards/kanata/uinput.conf /etc/modules-load.d/
 
 ##########
 ## Misc ##
 ##########
+# Path should be updated for Linux?
 setup-fzf-completions:
 	/usr/local/opt/fzf/install
 
-setup-kanata:
-	cp keyboards/kanata/99-uinput.rules /etc/udev/rules.d/
-	cp keyboards/kanata/uinput.conf /etc/modules-load.d/
 
 ############
 ## Python ##
@@ -101,6 +110,11 @@ setup-ipython:
 	ipython profile create
 	ln -sf $(shell pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 
+setup-kanata:
+	mkdir -p ~/.config/kanata
+	ln -sf $(shell pwd)/keyboards/kanata/toggle.sh ~/.config/kanata/
+	ln -sf $(shell pwd)/keyboards/kanata/pocket-reform.kbd ~/.config/kanata/
+
 setup-nvim:
 	mkdir -p ~/.config
 	rm -rf ~/.config/nvim
@@ -113,24 +127,13 @@ setup-starship:
 	rm -rf ~/.config/starship.toml
 	ln -s $(shell pwd)/starship.toml ~/.config/
 
-setup-tmux:
-	ln -sf $(shell pwd)/tmux.conf ~/.tmux.conf
-
-setup-zellij:
-	mkdir -p ~/.config
-	rm -rf ~/.config/zellij
-	ln -s $(shell pwd)/zellij ~/.config/zellij
-
 setup-sway-waybar:
-	mkdir -p ~/.config/kanata
-	ln -sf $(shell pwd)/keyboards/kanata/toggle.sh ~/.config/kanata/
-	ln -sf $(shell pwd)/keyboards/kanata/pocket-reform.kbd ~/.config/kanata/
+	mkdir -p ~/.config/sway
+	mkdir -p ~/.config/waybar
 	ln -sf $(shell pwd)/desktop/sway/config ~/.config/sway/config
 	ln -sf $(shell pwd)/desktop/waybar/config ~/.config/waybar/config
 
-setup-zsh:
-	./setupzsh.sh
-	ln -sf $(shell pwd)/completion.zsh ~/.completion.zsh
-	ln -sf $(shell pwd)/extras.zsh ~/.extras.zsh
+setup-zellij:
+	rm -rf ~/.config/zellij
+	ln -s $(shell pwd)/zellij ~/.config/zellij
 
-setup-dotfiles: setup-nvim setup-tmux setup-tmux-tpm setup-git setup-ipython setup-zsh
