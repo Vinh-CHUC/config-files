@@ -33,7 +33,7 @@ install-linux-bins:
 	apt install ninja-build gettext cmake make unzip curl build-essential
 	apt install bat build-essential fd-find fzf eza fish git ripgrep
 	# GUI
-	apt install alacritty foot mesa-utils sway upower xclip waybar
+	apt install alacritty foot mesa-utils sway upower xclip waybar wofi
 	# Security related
 	apt install fuse pinentry-tty scdaemon
 
