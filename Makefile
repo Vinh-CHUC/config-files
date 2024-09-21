@@ -32,8 +32,12 @@ install-linux-bins:
 	# Neovim build dependencies
 	apt install ninja-build gettext cmake make unzip curl build-essential
 	apt install bat build-essential fd-find fzf eza fish git ripgrep
-	# GUI
-	apt install alacritty foot mesa-utils sway upower xclip waybar wofi
+	# GUI - Wayland
+	apt install foot mesa-utils sway upower xclip waybar wofi
+	# GUI - I3
+	apt install i3 rofi
+	# Graphical Terminal Emulators
+	apt install alacritty
 	# Security related
 	apt install fuse pinentry-tty scdaemon
 
@@ -110,11 +114,6 @@ setup-ipython:
 	ipython profile create
 	ln -sf $(shell pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 
-setup-kanata:
-	mkdir -p ~/.config/kanata
-	ln -sf $(shell pwd)/keyboards/kanata/toggle.sh ~/.config/kanata/
-	ln -sf $(shell pwd)/keyboards/kanata/pocket-reform.kbd ~/.config/kanata/
-
 setup-nvim:
 	mkdir -p ~/.config
 	rm -rf ~/.config/nvim
@@ -132,6 +131,10 @@ setup-sway-waybar:
 	mkdir -p ~/.config/waybar
 	ln -sf $(shell pwd)/desktop/sway/config ~/.config/sway/config
 	ln -sf $(shell pwd)/desktop/waybar/config ~/.config/waybar/config
+
+setup-i3:
+	mkdir -p ~/.config/i3
+	ln -sf $(shell pwd)/desktop/i3/config ~/.config/i3/config
 
 setup-zellij:
 	rm -rf ~/.config/zellij
