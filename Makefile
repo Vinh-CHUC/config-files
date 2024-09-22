@@ -35,7 +35,7 @@ install-linux-bins:
 	# GUI - Wayland
 	apt install foot mesa-utils sway upower xclip waybar wofi
 	# GUI - I3
-	apt install i3 rofi
+	apt install i3 polybar rofi
 	# Graphical Terminal Emulators
 	apt install alacritty
 	# Security related
@@ -135,6 +135,8 @@ setup-sway-waybar:
 setup-i3:
 	mkdir -p ~/.config/i3
 	ln -sf $(shell pwd)/desktop/i3/config ~/.config/i3/config
+	rm -Rf ~/.config/polybar
+	ln -sf $(shell pwd)/desktop/polybar ~/.config/polybar
 
 setup-zellij:
 	rm -rf ~/.config/zellij
