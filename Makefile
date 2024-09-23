@@ -32,10 +32,12 @@ install-linux-bins:
 	# Neovim build dependencies
 	apt install ninja-build gettext cmake make unzip curl build-essential
 	apt install bat build-essential fd-find fzf eza fish git ripgrep
+	# Haskell build dependencies
+	apt install libgmp-dev
 	# GUI - Wayland
 	apt install foot mesa-utils sway upower xclip waybar wofi
 	# GUI - I3
-	apt install i3 polybar rofi
+	apt install brightnessctl i3 blueman pavucontrol pasystray polybar rofi
 	# Graphical Terminal Emulators
 	apt install alacritty
 	# Security related
