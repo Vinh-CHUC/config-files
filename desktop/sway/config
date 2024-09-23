@@ -87,7 +87,8 @@ focus_on_window_activation none
     font pango: Inter, Icons Medium 11
 
     # screenshot
-    bindsym $mod+p exec grim -g "$(slurp)" ~/Pictures/$(date +'screenshot-%Y-%m-%d-%H-%M-%S').png
+    bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy --type image/png
+    bindsym $mod+Shift+p exec grim -g "$(slurp)" ~/Pictures/$(date +'screenshot-%Y-%m-%d-%H-%M-%S').png
     bindsym $mod+Shift+v exec pavucontrol
     # bindsym $mod+Shift+l exec swaylock
 
