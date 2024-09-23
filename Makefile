@@ -32,6 +32,10 @@ install-linux-bins:
 	# Neovim build dependencies
 	apt install ninja-build gettext cmake make unzip curl build-essential
 	apt install bat build-essential fd-find fzf eza fish git ripgrep
+	# Python build deps
+	apt install build-essential libssl-dev zlib1g-dev \
+		libbz2-dev libreadline-dev libsqlite3-dev curl git \
+		libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 	# Haskell build dependencies
 	apt install libgmp-dev
 	# GUI - Wayland

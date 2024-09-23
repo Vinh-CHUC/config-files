@@ -11,6 +11,7 @@ if status is-interactive
     abbr ls 'eza -ls time'
 
     # Paths
+    set -Ux PYENV_ROOT $HOME/.pyenv
     set PATHS \
         /usr/local/bin \
         $HOME/bin \
@@ -19,10 +20,13 @@ if status is-interactive
         $HOME/.ghcup/bin \
         $HOME/.cabal/bin \
         $HOME/.pack/bin \
+        $PYENV_ROOT/bin \
         $HOME/go/bin
     for p in $PATHS
         test -d $p; and fish_add_path $p
     end
+
+    pyenv init --path | source
 
     # Misc
     set -x FZF_DEFAULT_COMMAND 'fd --type file --hidden --no-ignore'
