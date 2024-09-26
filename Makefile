@@ -36,12 +36,13 @@ install-linux-bins:
 	apt install build-essential libssl-dev zlib1g-dev \
 		libbz2-dev libreadline-dev libsqlite3-dev curl git \
 		libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+	apt install just
 	# Haskell build dependencies
 	apt install libgmp-dev
 	# GUI - Wayland
 	apt install foot mesa-utils sway upower xclip waybar wofi
 	# GUI - I3
-	apt install brightnessctl i3 blueman pavucontrol pasystray polybar rofi
+	apt install brightnessctl i3 blueman maim pavucontrol pasystray polybar rofi
 	# Graphical Terminal Emulators
 	apt install alacritty
 	# Security related
