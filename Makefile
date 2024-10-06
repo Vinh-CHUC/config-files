@@ -99,6 +99,16 @@ install-rustup:
 install-rust-analyzer:
 	rustup component add rust-analyzer
 
+##########
+## Lua ###
+##########
+install-lua:
+	apt install liblua5.4-dev lua5.4
+	cd /tmp && wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz \
+		&& tar zxpf luarocks-3.11.1.tar.gz \
+		&& cd luarocks-3.11.1 \
+		&& ./configure && make && sudo make install
+
 ##############
 ## Dotfiles ##
 ##############
