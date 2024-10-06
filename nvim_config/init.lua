@@ -1,6 +1,5 @@
 require('my_basic_config')
 require("config.lazy")
-require('my_colorscheme_config')
 require('my_telescope_config')
 require('my_nvimtree_config')
 require('my_slime_config')

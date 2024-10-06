@@ -4,7 +4,15 @@ return {
     'crispgm/nvim-tabline',
 
     'folke/neodev.nvim',
-    'folke/tokyonight.nvim',
+    {
+        'folke/tokyonight.nvim',
+        priority=1000,
+        config = function()
+            require('tokyonight').setup({style= "night", transparent = true})
+            vim.cmd.colorscheme('tokyonight')
+            vim.cmd("highlight ColorColumn ctermbg=0 guibg=LightYellow")
+        end,
+    },
 
     'ggandor/leap.nvim',
     'imsnif/kdl.vim',
@@ -26,12 +34,10 @@ return {
     'nvim-lualine/lualine.nvim',
     'nvim-orgmode/orgmode',
     'nvim-telescope/telescope.nvim',
-    
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
     },
-    
     'nvim-tree/nvim-web-devicons',
     'nvim-tree/nvim-tree.lua',
 
@@ -39,7 +45,6 @@ return {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
     },
-    
     'nvim-treesitter/nvim-treesitter-textobjects',
     'rafcamlet/nvim-luapad',
 
