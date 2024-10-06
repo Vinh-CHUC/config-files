@@ -82,8 +82,8 @@ vim.keymap.set({'n', 't'}, '<C-k>', '<CMD>NavigatorUp<CR>')
 vim.keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
 
 -- Leader keys
-vim.g.mapleader = "["
-vim.g.maplocalleader = "["
+vim.g.mapleader = ";"
+vim.g.maplocalleader = ";"
 
 -- init.lua
 vim.keymap.set("n", "<leader>ev", ":vsplit $MYVIMRC <cr>", {remap = false})
