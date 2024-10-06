@@ -1,5 +1,5 @@
 require('my_basic_config')
-require('my_plugins_config')
+require("config.lazy")
 require('my_colorscheme_config')
 require('my_telescope_config')
 require('my_nvimtree_config')
@@ -312,15 +312,3 @@ vim.keymap.set("n", "<leader>rI", function() require('refactoring').refactor('In
 vim.keymap.set({ "n", "x" }, "<leader>ri", function() require('refactoring').refactor('Inline Variable') end)
 vim.keymap.set("n", "<leader>rb", function() require('refactoring').refactor('Extract Block') end)
 vim.keymap.set("n", "<leader>rbf", function() require('refactoring').refactor('Extract Block To File') end)
-
--- Idris2
-vim.api.nvim_create_user_command("CaseSplit", function() require('idris2.code_action').case_split() end, {})
-vim.api.nvim_create_user_command("AddClause", function() require('idris2.code_action').add_clause() end, {})
-vim.api.nvim_create_user_command("ExprSearch", function() require('idris2.code_action').expr_search() end, {})
-vim.api.nvim_create_user_command("GenDef", function() require('idris2.code_action').generate_def() end, {})
-require('idris2').setup ({
-    server = {
-        on_attach = on_attach,
-        capabilities=capabilities
-    }
-})
