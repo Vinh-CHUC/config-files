@@ -13,8 +13,9 @@ set $left left
 set $down down
 set $up up
 set $right right
-# Your preferred terminal emulator
-set $term foot
+# Your preferred terminal emulator. You can change it by running:
+# sudo update-alternatives --config x-terminal-emulator
+set $term x-terminal-emulator
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
@@ -23,12 +24,6 @@ set $menu wofi --show drun -p Search -n -i -I -W 66% -s $HOME/.config/wofi.css
 #xwayland disable
 
 ### Output configuration
-#
-# Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-#output * bg "#000000" fill
-#exec swaybg -c "#000000"
-exec swaybg -i /usr/share/backgrounds/reform-mountains.jpg
-
 #
 # Example configuration:
 #
@@ -40,7 +35,6 @@ exec swaybg -i /usr/share/backgrounds/reform-mountains.jpg
 output DSI-1 transform 270
 output DSI-1 scale 2
 
-output HDMI-A-1 resolution 3840x2160@30Hz
 ### Idle configuration
 #
 # Example configuration:
@@ -129,7 +123,7 @@ hide_edge_borders both
     #bindsym $mod+Shift+Down move down
     #bindsym $mod+Shift+Up move up
     #bindsym $mod+Shift+Right move right
-#
+
     bindsym $mod+F1 exec brightnessctl s 10%-
     bindsym $mod+F2 exec brightnessctl s +10%
     bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
@@ -288,12 +282,7 @@ exec pasystray
 # start MNT Reform tray menu
 exec /usr/libexec/reform-tools/reform-tray.py
 
-# default theme settings
-exec gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-exec gsettings set org.gnome.desktop.interface font-name 'Inter Medium 11'
-exec gsettings set org.gnome.desktop.interface monospace-font-name 'Iosevka Term 11'
-exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
-exec gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-exec gsettings set org.gnome.gedit.preferences.editor scheme 'cobalt'
+# start wallpaper script
+exec /usr/libexec/reform-tools/reform-wallpaper.py
 
 include config.d/*
