@@ -4,25 +4,23 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
+#################
+### VARIABLES ###
+#################
 set $mod Mod4
-# Home row direction keys, like vim
+
 set $left left
 set $down down
 set $up up
 set $right right
-# Your preferred terminal emulator. You can change it by running:
-# sudo update-alternatives --config x-terminal-emulator
-set $term x-terminal-emulator
-# Your preferred application launcher
-# Note: it's recommended that you pass the final command to sway
-#set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+set $term alacritty
+
 set $menu wofi --show drun -p Search -n -i -I -W 66% -s $HOME/.config/wofi.css
 
-#xwayland disable
-
+################
+### DISPLAYS ###
+################
 ### Output configuration
 #
 # Example configuration:
@@ -30,15 +28,14 @@ set $menu wofi --show drun -p Search -n -i -I -W 66% -s $HOME/.config/wofi.css
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-
-# display config for MNT Pocket Reform
 output DSI-1 transform 270
 output DSI-1 scale 2
 
-### Idle configuration
-#
-# Example configuration:
-#
+#xwayland disable
+
+##########################
+### IDLE CONFIGURATION ###
+##########################
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'brightnessctl --save; brightnessctl set 0' \
@@ -67,24 +64,25 @@ output DSI-1 scale 2
 #default_border pixel 10
 hide_edge_borders both
 
-### Key bindings
-#
-# Basics:
-#
-    # Start a terminal
-    bindsym $mod+Return exec $term
-    bindsym $mod+Shift+s exec grim ~/Pictures/$(date +'screenshot-%Y-%m-%d-%H-%M-%S').png
-    bindsym $mod+Shift+x exec grim -g "$(slurp)" ~/Pictures/$(date +'screenshot-%Y-%m-%d-%H-%M-%S').png
+####################
+### KEY BINDINGS ###
+####################
+
+############
+## Basics ##
+############
+    font pango: Inter, Icons Medium 11
+
+    # screenshot
+    bindsym $mod+p exec grim -g "$(slurp)" ~/Pictures/$(date +'screenshot-%Y-%m-%d-%H-%M-%S').png
     bindsym $mod+Shift+v exec pavucontrol
-    bindsym $mod+Shift+l exec swaylock
+    # bindsym $mod+Shift+l exec swaylock
 
     # Kill focused window
-    bindsym $mod+Escape kill
-    bindsym --border button3 kill
+    bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
-    bindsym $mod+Tab exec $menu
+    bindsym $mod+Return exec $menu
     bindsym $mod+t exec thunar
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -99,41 +97,40 @@ hide_edge_borders both
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
-#
-# Moving around:
-#
-    # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    #bindsym $mod+Left focus left
-    #bindsym $mod+Down focus down
-    #bindsym $mod+Up focus up
-    #bindsym $mod+Right focus right
 
-    # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    #bindsym $mod+Shift+Left move left
-    #bindsym $mod+Shift+Down move down
-    #bindsym $mod+Shift+Up move up
-    #bindsym $mod+Shift+Right move right
+#######################
+## Movement & Layout ##
+#######################
+
+## Changing focus, moving things
+    # Move your focus around
+    bindsym $mod+h focus left
+    bindsym $mod+j focus down
+    bindsym $mod+k focus up
+    bindsym $mod+l focus right
+
+    bindsym $mod+Control+h workspace prev_on_output
+    bindsym $mod+Control+l workspace next_on_output
+
+    # move focused window
+    bindsym $mod+Shift+h move left
+    bindsym $mod+Shift+j move down
+    bindsym $mod+Shift+k move up
+    bindsym $mod+Shift+l move right
+
+    bindsym $mod+Shift+Control+h move window to workspace prev
+    bindsym $mod+Shift+Control+l move window to workspace next
 
     bindsym $mod+F1 exec brightnessctl s 10%-
     bindsym $mod+F2 exec brightnessctl s +10%
     bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
     bindsym XF86MonBrightnessUp exec brightnessctl s +10%
-    bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-    bindsym $mod+F4 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym $mod+F5 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-#
-# Workspaces:
-#
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AUdioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+## Workspaces
+
     # Switch to workspace
     bindsym $mod+1 workspace 1
     bindsym $mod+2 workspace 2
@@ -141,10 +138,6 @@ hide_edge_borders both
     bindsym $mod+4 workspace 4
     bindsym $mod+5 workspace 5
     bindsym $mod+6 workspace 6
-    bindsym $mod+7 workspace 7
-    bindsym $mod+8 workspace 8
-    bindsym $mod+9 workspace 9
-    bindsym $mod+0 workspace 10
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace 1
     bindsym $mod+Shift+2 move container to workspace 2
@@ -152,25 +145,20 @@ hide_edge_borders both
     bindsym $mod+Shift+4 move container to workspace 4
     bindsym $mod+Shift+5 move container to workspace 5
     bindsym $mod+Shift+6 move container to workspace 6
-    bindsym $mod+Shift+7 move container to workspace 7
-    bindsym $mod+Shift+8 move container to workspace 8
-    bindsym $mod+Shift+9 move container to workspace 9
-    bindsym $mod+Shift+0 move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
 # Layout stuff:
 #
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    bindsym $mod+h splith
-    bindsym $mod+v splitv
+    # Horizontal split in i3 corresponds to vertical spit in vim
+    bindsym $mod+v splith
+    # Vertical split if i3 corresponds to horizontal split in vim
+    bindsym $mod+s splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym $mod+Shift+s layout stacking
+    bindsym $mod+Shift+w layout tabbed
+    bindsym $mod+Shift+t layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -203,10 +191,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
 
     # Ditto, with arrow keys
     #bindsym Left resize shrink width 10px
@@ -229,7 +217,6 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
-font pango: Inter, Icons Medium 11
 
 #
 # Status Bar:
