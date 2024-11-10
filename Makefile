@@ -53,9 +53,16 @@ install-linux-security:
 	apt install pinentry-gtk2 scdaemon
 
 ## MNT Pocket Reform
-setup-kanata:
+setup-kanata-root-part:
+	groupadd uinput
+	usermod -aG uinput $(shell whoami)
+	usermod -aG input $(shell whoami)
 	cp keyboards/kanata/99-uinput.rules /etc/udev/rules.d/
 	cp keyboards/kanata/uinput.conf /etc/modules-load.d/
+	ln -sf ~/.cargo/bin/kanata /usr/bin/kanata
+
+setup-kanata:
+	ln -sf $(shell pwd)/keyboards/kanata ~/.config/kanata
 
 ##########
 ## Misc ##
