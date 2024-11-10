@@ -42,6 +42,7 @@ install-linux-bins:
 	apt install libgmp-dev
 	# For opening appimages
 	apt install libfuse2t64
+	apt install alacritty just
 
 install-linux-i3:
 	apt install brightnessctl i3 blueman maim pavucontrol pasystray polybar rofi xclip
