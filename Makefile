@@ -32,6 +32,7 @@ install-linux-bins:
 	# Neovim build dependencies
 	apt install ninja-build gettext cmake make unzip curl build-essential
 	apt install bat build-essential fd-find fzf eza fish git ripgrep
+	mkdir -p ~/.local/bin
 	ln -s $(which fdfind) ~/.local/bin/fd
 	# Python build deps
 	apt install build-essential libssl-dev zlib1g-dev \
