@@ -47,8 +47,10 @@ install-linux-bins:
 	apt install brightnessctl i3 blueman maim pavucontrol pasystray polybar rofi
 	# Graphical Terminal Emulators
 	apt install alacritty
+	# For opening appimages
+	apt install libfuse2t64
 	# Security related
-	apt install fuse pinentry-tty scdaemon
+	apt install pinentry-gtk2 scdaemon
 
 ## MNT Pocket Reform
 setup-kanata:
