@@ -9,6 +9,9 @@ if status is-interactive
     abbr gsf 'git st --porcelain | fzf'
     abbr glf "git log --pretty=format:'%h %an %ad %s' --date=short | fzf"
     abbr ls 'eza -ls time'
+    abbr standalone 'xrandr --output HDMI-1-0 --off && ~/.config/polybar/launch.sh --shapes'
+    abbr workdesktop '~/.screenlayout/work.sh && cd ~/.config/polybar && ./launch.sh --shapes'
+    abbr homedesktop '~/.screenlayout/home.sh && cd ~/.config/polybar && ./launch.sh --shapes'
 
     # Paths
     set -Ux PYENV_ROOT $HOME/.pyenv
