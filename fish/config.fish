@@ -13,6 +13,8 @@ if status is-interactive
     abbr workdesktop '~/.screenlayout/work.sh && cd ~/.config/polybar && ./launch.sh --shapes'
     abbr homedesktop '~/.screenlayout/home.sh && cd ~/.config/polybar && ./launch.sh --shapes'
 
+    abbr psource 'source $(poetry env info --path)/bin/activate.fish'
+
     # Paths
     set -Ux PYENV_ROOT $HOME/.pyenv
     set PATHS \
@@ -24,6 +26,7 @@ if status is-interactive
         $HOME/.cabal/bin \
         $HOME/.pack/bin \
         $PYENV_ROOT/bin \
+        /usr/local/go/bin \
         $HOME/go/bin
     for p in $PATHS
         test -d $p; and fish_add_path $p
