@@ -1,3 +1,4 @@
 nvim/
 nvim_config/lazy-lock.json
 fish/completions/poetry.fish
+fish/fish_variables
