@@ -1,4 +1,5 @@
 (defcfg
+  linux-dev           /dev/input/event0
   concurrent-tap-hold yes
 )
 
