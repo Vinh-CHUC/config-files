@@ -38,6 +38,8 @@ install-linux-bins:
 	apt install build-essential libssl-dev zlib1g-dev \
 		libbz2-dev libreadline-dev libsqlite3-dev curl git \
 		libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+	# CPP
+	apt install clangd
 	# Haskell build dependencies
 	apt install libgmp-dev
 	# For opening appimages
