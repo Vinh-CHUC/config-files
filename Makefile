@@ -32,8 +32,6 @@ install-linux-bins:
 	# Neovim build dependencies
 	apt install ninja-build gettext cmake make unzip curl build-essential
 	apt install bat build-essential fd-find fzf eza fish git ripgrep
-	mkdir -p ~/.local/bin
-	ln -s $(which fdfind) ~/.local/bin/fd
 	# Python build deps
 	apt install build-essential libssl-dev zlib1g-dev \
 		libbz2-dev libreadline-dev libsqlite3-dev curl git \
@@ -58,14 +56,12 @@ install-linux-security:
 ## MNT Pocket Reform
 setup-kanata-root-part:
 	groupadd uinput
-	usermod -aG uinput $(shell whoami)
-	usermod -aG input $(shell whoami)
+	usermod -aG uinput vinh
+	usermod -aG input vinh
 	cp keyboards/kanata/99-uinput.rules /etc/udev/rules.d/
 	cp keyboards/kanata/uinput.conf /etc/modules-load.d/
 	ln -sf ~/.cargo/bin/kanata /usr/bin/kanata
 
-setup-kanata:
-	ln -sf $(shell pwd)/keyboards/kanata ~/.config/kanata
 
 ##########
 ## Misc ##
@@ -138,11 +134,19 @@ setup-fish:
 setup-fisher:
 	curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 
+setup-fdfind:
+	mkdir -p ~/.local/bin
+	ln -s $(which fdfind) ~/.local/bin/fd
+	ln -s $(shell pwd)/fdignore ~/.fdignore
+
 setup-git:
 	ln -sf $(shell pwd)/gitconfig ~/.gitconfig
 	mkdir -p ~/.config
 	rm -rf ~/.config/gitui
 	ln -s $(shell pwd)/gitui ~/.config
+
+setup-kanata:
+	ln -sf $(shell pwd)/keyboards/kanata ~/.config/kanata
 
 setup-ipython:
 	ipython profile create
