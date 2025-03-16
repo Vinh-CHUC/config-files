@@ -81,6 +81,9 @@ setup-fzf-completions:
 install-python-poetry:
 	curl -sSL https://install.python-poetry.org | python3 -
 
+install-python-uv:
+	curl -LsSf https://astral.sh/uv/install.sh | sh
+
 ## Note these are already checked-in
 setup-python-poetry-completions:
 	poetry completions fish > ~/.config/fish/completions/poetry.fish
