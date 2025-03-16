@@ -223,9 +223,6 @@ require('orgmode').setup({
   org_default_notes_file = '~/org-files/notes.org',
 })
 
-
-require("neodev").setup()
-
 -------------------
 -- NVIM LSP BEGIN -
 -------------------
