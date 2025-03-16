@@ -18,6 +18,7 @@ if status is-interactive
         /usr/local/bin \
         $HOME/bin \
         $HOME/.local/bin \
+        $HOME/.local/bin/lua-language-server/bin \
         $HOME/.cargo/bin \
         $HOME/.ghcup/bin \
         $HOME/.cabal/bin \
