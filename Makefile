@@ -48,7 +48,7 @@ install-linux-i3:
 	apt install brightnessctl i3 blueman maim pavucontrol pasystray polybar rofi xclip
 
 install-linux-sway:
-	apt install mesa-utils sway upower waybar wlr-randr wofi
+	apt install mesa-utils sway upower waybar wl-clipboard wlr-randr wofi
 
 install-linux-security:
 	apt install pinentry-gtk2 scdaemon
@@ -120,6 +120,8 @@ install-lua:
 		&& tar zxpf luarocks-3.11.1.tar.gz \
 		&& cd luarocks-3.11.1 \
 		&& ./configure && make && sudo make install
+
+# lua-language-server on arm64, download release from website
 
 ##############
 ## Dotfiles ##

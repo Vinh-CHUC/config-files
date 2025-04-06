@@ -19,6 +19,7 @@ if status is-interactive
         $HOME/bin \
         $HOME/.local/bin \
         $HOME/.local/bin/lua-language-server/bin \
+        $HOME/.local/bin/obsidian \
         $HOME/.cargo/bin \
         $HOME/.ghcup/bin \
         $HOME/.cabal/bin \
