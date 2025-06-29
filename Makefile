@@ -116,10 +116,13 @@ install-rust-analyzer:
 ##########
 install-lua:
 	apt install liblua5.4-dev lua5.4
-	cd /tmp && wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz \
-		&& tar zxpf luarocks-3.11.1.tar.gz \
-		&& cd luarocks-3.11.1 \
+	cd /tmp && wget https://luarocks.org/releases/luarocks-3.12.2.tar.gz \
+		&& tar zxpf luarocks-3.12.2.tar.gz \
+		&& cd luarocks-3.12.2 \
 		&& ./configure && make && sudo make install
+
+install-luals:
+	brew install lua-language-server
 
 # lua-language-server on arm64, download release from website
 
