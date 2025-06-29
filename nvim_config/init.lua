@@ -261,7 +261,7 @@ for _, lsp in ipairs(servers) do
 end
 
 require("lspconfig")["clangd"].setup{
-  cmd = { "clangd", "--clang-tidy"},
+  cmd = { "clangd-18", "--clang-tidy"},
   on_attach = on_attach,
   capabilities=capabilities
 }
