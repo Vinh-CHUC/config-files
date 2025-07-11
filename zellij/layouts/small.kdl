@@ -1,0 +1,17 @@
+layout {
+    default_tab_template hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="tab-bar"
+        }
+        pane borderless=true
+    }
+    tab name="C++ Playground" cwd="sandbox/languages/cpp/playground"
+    tab name="C++ Term" cwd="sandbox/languages/cpp/playground"
+    tab name="Rust Playground" cwd="sandbox/languages/rust/rust_playground"
+    tab name="Rust Term" cwd="sandbox/languages/rust/rust_playground"
+    tab name="Haskell Playground" cwd="sandbox/languages/haskell/haskell-playground"
+    tab name="Haskell Term" cwd="sandbox/languages/haskell/haskell-playground"
+    tab name="Python Playground" cwd="sandbox/languages/python/playground"
+    tab name="Python Term" cwd="sandbox/languages/python/playground"
+    tab name="config-files" cwd="config-files"
+}
