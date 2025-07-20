@@ -11,6 +11,7 @@ return {
             -- See the configuration section for more details
             -- Load luvit types when the `vim.uv` word is found
             { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            "nvim-dap-ui"
           },
         },
     },
@@ -41,6 +42,15 @@ return {
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
 
+    'mfussenegger/nvim-dap',
+    {
+        'mfussenegger/nvim-dap-python',
+        dependencies = {"mfussenegger/nvim-dap"},
+        config = function()
+            require("dap-python").setup("python3")
+        end
+    },
+
     'neovim/nvim-lspconfig',
 
     'nvimtools/none-ls.nvim',
@@ -60,6 +70,26 @@ return {
         build = ':TSUpdate',
     },
     'nvim-treesitter/nvim-treesitter-textobjects',
+
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
+        config = function()
+            require('dapui').setup()
+            local dap, dapui = require('dap'), require('dapui')
+            --
+            -- Auto-open/close dapui when debugging starts/ends
+            dap.listeners.after.event_initialized['dapui_config'] = function()
+              dapui.open()
+            end
+            dap.listeners.before.event_terminated['dapui_config'] = function()
+              dapui.close()
+            end
+            dap.listeners.before.event_exited['dapui_config'] = function()
+              dapui.close()
+            end
+        end
+    },
     'rafcamlet/nvim-luapad',
 
     'stevearc/aerial.nvim',
