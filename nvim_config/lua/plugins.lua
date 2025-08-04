@@ -121,11 +121,6 @@ return {
 
     'imsnif/kdl.vim',
     'jpalardy/vim-slime',
-    {
-        'junegunn/fzf',
-        build = function() vim.fn['fzf#install']() end
-    },
-    'junegunn/fzf.vim',
 
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
