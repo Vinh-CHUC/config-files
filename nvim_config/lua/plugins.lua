@@ -1,6 +1,7 @@
 return {
     'airblade/vim-gitgutter',
     'arkav/lualine-lsp-progress',
+
     require('my_avante_config'),
 
     'crispgm/nvim-tabline',
@@ -66,6 +67,9 @@ return {
     'nvimtools/none-ls.nvim',
     'nvim-lua/plenary.nvim',
     'nvim-lualine/lualine.nvim',
+
+    require("my_nvim_neo_tree_config"),
+
     'nvim-orgmode/orgmode',
     {
       "nvim-telescope/telescope.nvim",
@@ -83,7 +87,6 @@ return {
         build = 'make',
     },
     'nvim-tree/nvim-web-devicons',
-    'nvim-tree/nvim-tree.lua',
 
     {
         'nvim-treesitter/nvim-treesitter',
