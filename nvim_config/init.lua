@@ -291,9 +291,6 @@ require('aerial').setup({
 -- You probably also want to set a keymap to toggle aerial
 vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
 
--- Leap
-require('leap').create_default_mappings()
-
 -- refactoring
 require('refactoring').setup()
 vim.keymap.set("x", "<leader>re", function() require('refactoring').refactor('Extract Function') end)
