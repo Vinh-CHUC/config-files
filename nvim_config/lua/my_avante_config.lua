@@ -37,6 +37,9 @@ local avante = {
               }
             }
         },
+        file_selector = {
+          provider = "telescope",
+        },
       },
       dependencies = {
         "nvim-lua/plenary.nvim",
