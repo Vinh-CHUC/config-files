@@ -162,12 +162,20 @@ return {
               dapui.close()
             end
             dap.listeners.before.event_exited['dapui_config'] = function()
-              dapui.close()
+                dapui.close()
             end
         end
     },
     'rafcamlet/nvim-luapad',
-
+    {
+        "rmagatti/auto-session",
+        lazy = false,
+        ---@module "auto-session"
+        ---@type AutoSession.Config
+        opts = {
+            suppressed_dirs = { "~/", "~/Downloads"},
+        },
+    },
     'stevearc/aerial.nvim',
 
     {
