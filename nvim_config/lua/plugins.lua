@@ -1,9 +1,6 @@
 return {
     'airblade/vim-gitgutter',
     'arkav/lualine-lsp-progress',
-
-    require('my_avante_config'),
-
     'crispgm/nvim-tabline',
 
     {
@@ -40,6 +37,11 @@ return {
         { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
         { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
       },
+    },
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false
     },
     {
       "folke/which-key.nvim",
@@ -111,7 +113,40 @@ return {
         build = ':TSUpdate',
     },
     'nvim-treesitter/nvim-treesitter-textobjects',
-
+    {
+        "olimorris/codecompanion.nvim",
+        opts = {},
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "ravitemer/mcphub.nvim",
+            {
+                "MeanderingProgrammer/render-markdown.nvim",
+                ft = { "markdown", "codecompanion" }
+            },
+            {
+                "echasnovski/mini.diff",
+                config = function()
+                    local diff = require("mini.diff")
+                    diff.setup({
+                        -- Disabled by default
+                        source = diff.gen_source.none(), })
+                end,
+            },
+            {
+                "HakonHarnes/img-clip.nvim",
+                opts = {
+                    filetypes = {
+                        codecompanion = {
+                            prompt_for_file_name = false,
+                            template = "[Image]($FILE_PATH)",
+                            use_absolute_path = true,
+                        },
+                    },
+                },
+            },
+        },
+    },
     {
         "rcarriga/nvim-dap-ui",
         dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"},
