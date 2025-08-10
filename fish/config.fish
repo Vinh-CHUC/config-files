@@ -33,6 +33,10 @@ if status is-interactive
 
     pyenv init --path | source
 
+    # LLMs
+    set -x GEMINI_MODEL "gemini-2.5-flash"
+    if test -f $HOME/.gemini_api_key; set -x GEMINI_API_KEY (string trim (cat $HOME/.gemini_api_key)); end;
+
     # Misc
     set -x FZF_DEFAULT_COMMAND 'fd --type file --hidden --no-ignore'
     set -x POETRY_VIRTUALENVS_IN_PROJECT 1
