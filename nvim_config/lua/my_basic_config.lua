@@ -67,11 +67,7 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'longest'}
 -----------------
 -- Key mapping --
 -----------------
-vim.keymap.set("i", "jk", "<Esc>", {remap = false})
-
 -- Simpler movement
-vim.keymap.set("", "<right>", "gt")
-vim.keymap.set("", "<left>", "gT")
 -- vim.keymap.set("n", "<C-j>", "<C-W>j", {remap = false})
 -- vim.keymap.set("n", "<C-k>", "<C-W>k", {remap = false})
 -- vim.keymap.set("n", "<C-h>", "<C-W>h", {remap = false})
@@ -84,6 +80,8 @@ vim.keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
 -- Leader keys
 vim.g.mapleader = ";"
 vim.g.maplocalleader = ";"
+
+vim.keymap.set('n', '<leader>q', '<cmd>bdelete<CR>', { desc = 'Delete current buffer' })
 
 -- init.lua
 vim.keymap.set("n", "<leader>ev", ":vsplit $MYVIMRC <cr>", {remap = false})
