@@ -1,7 +1,9 @@
 return {
     'airblade/vim-gitgutter',
+
+    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+
     'arkav/lualine-lsp-progress',
-    'crispgm/nvim-tabline',
 
     {
         "folke/lazydev.nvim",
