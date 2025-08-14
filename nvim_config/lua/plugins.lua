@@ -1,8 +1,6 @@
 return {
     'airblade/vim-gitgutter',
 
-    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-
     'arkav/lualine-lsp-progress',
 
     {
@@ -82,6 +80,10 @@ return {
         config = function()
             require("dap-python").setup("python3")
         end
+    },
+
+    {
+      'nanozuki/tabby.nvim',
     },
 
     'neovim/nvim-lspconfig',

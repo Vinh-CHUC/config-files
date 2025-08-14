@@ -81,7 +81,12 @@ vim.keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
 vim.g.mapleader = ";"
 vim.g.maplocalleader = ";"
 
-vim.keymap.set('n', '<leader>q', '<cmd>bdelete<CR>', { desc = 'Delete current buffer' })
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>to", ":tabonly<CR>", { noremap = true })
+vim.keymap.set("n", "<Right>", ":tabn<CR>", { noremap = true })
+vim.keymap.set("n", "<Left>", ":tabp<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>tmp", ":-tabmove<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>tmn", ":+tabmove<CR>", { noremap = true })
 
 -- init.lua
 vim.keymap.set("n", "<leader>ev", ":vsplit $MYVIMRC <cr>", {remap = false})
