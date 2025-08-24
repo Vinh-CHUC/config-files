@@ -29,30 +29,12 @@ telescope.setup {
         }
     },
     pickers = {
-        buffers = {
-            mappings = {
-                i = { ["<CR>"] = actions.select_tab_drop }
-            }
-        },
         find_files = {
-            mappings = {
-                i = { ["<CR>"] = actions.select_tab_drop },
-            },
             find_command = {
                 "fd", "--type", "file", "--hidden", "--no-ignore",
                 "--ignore-file", os.getenv("HOME") .. "/.fdignore"
             }
         },
-        git_files = {
-            mappings = {
-                i = { ["<CR>"] = actions.select_tab_drop }
-            }
-        },
-        old_files = {
-            mappings = {
-                i = { ["<CR>"] = actions.select_tab_drop }
-            }
-        }
     }
 }
 telescope.load_extension("fzf")
