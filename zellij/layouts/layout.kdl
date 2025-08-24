@@ -18,7 +18,9 @@ layout {
     }
     tab name="C++ Playground" cwd="sandbox/languages/cpp/playground"
     tab name="Rust Playground" cwd="sandbox/languages/rust"
-    tab name="Haskell Playground" cwd="sandbox/languages/haskell/haskell-playground"
     tab name="Python Playground" cwd="sandbox/languages/python/playground"
     tab name="config-files" cwd="config-files"
+    tab name="Obsidian" cwd="../Documents/Personal"
+    tab name="Lua Playground" cwd="sandbox/languages/lua"
+    tab name="Haskell Playground" cwd="sandbox/languages/haskell/haskell-playground"
 }
