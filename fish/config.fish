@@ -13,7 +13,7 @@ if status is-interactive
     abbr psource 'source $(poetry env info --path)/bin/activate.fish'
 
     # Paths
-    set -Ux PYENV_ROOT $HOME/.pyenv
+    set -gx PYENV_ROOT $HOME/.pyenv
     set PATHS \
         /usr/local/bin \
         $HOME/bin \
