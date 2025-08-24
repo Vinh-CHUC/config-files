@@ -31,7 +31,7 @@ install-linux-starship:
 install-linux-bins:
 	# Neovim build dependencies
 	apt install ninja-build gettext cmake make unzip curl build-essential
-	apt install bat build-essential fd-find fzf eza fish git ripgrep sd
+	apt install bat build-essential direnv fd-find fzf eza fish git ripgrep sd
 	# Python build deps
 	apt install build-essential libssl-dev zlib1g-dev \
 		libbz2-dev libreadline-dev libsqlite3-dev curl git \
