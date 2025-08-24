@@ -23,6 +23,7 @@ if status is-interactive
         $HOME/.local/bin/lua-language-server/bin \
         $HOME/.local/bin/obsidian \
         $HOME/.cargo/bin \
+        $HOME/.elan/bin \
         $HOME/.ghcup/bin \
         $HOME/.cabal/bin \
         $HOME/.pack/bin \

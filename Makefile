@@ -112,6 +112,12 @@ install-rust-analyzer:
 	rustup component add rust-analyzer
 
 ##########
+## Rust ##
+##########
+install-lean4:
+	curl https://elan.lean-lang.org/elan-init.sh -sSf | sh -s -- --no-modify-path -y
+
+##########
 ## Lua ###
 ##########
 install-lua:
