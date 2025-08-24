@@ -6,12 +6,17 @@ layout {
         pane borderless=true
     }
     tab name="C++ Playground" cwd="sandbox/languages/cpp/playground"
-    tab name="C++ Term" cwd="sandbox/languages/cpp/playground"
-    tab name="Rust Playground" cwd="sandbox/languages/rust/rust_playground"
-    tab name="Rust Term" cwd="sandbox/languages/rust/rust_playground"
-    tab name="Haskell Playground" cwd="sandbox/languages/haskell/haskell-playground"
-    tab name="Haskell Term" cwd="sandbox/languages/haskell/haskell-playground"
+    tab name="C++ Playground Term" cwd="sandbox/languages/cpp/playground"
+    tab name="Rust Playground" cwd="sandbox/languages/rust"
+    tab name="Rust Playground Term" cwd="sandbox/languages/rust"
     tab name="Python Playground" cwd="sandbox/languages/python/playground"
-    tab name="Python Term" cwd="sandbox/languages/python/playground"
+    tab name="Python Playground Term" cwd="sandbox/languages/python/playground"
+    tab name="Lean4 Playground" cwd="sandbox/languages/lean4/playground"
+    tab name="Lean4 Playground Term" cwd="sandbox/languages/lean4/playground"
     tab name="config-files" cwd="config-files"
+    tab name="Obsidian" cwd="../Documents/Personal"
+    tab name="Lua Playground" cwd="sandbox/languages/lua"
+    tab name="Lua Playground Term" cwd="sandbox/languages/lua"
+    tab name="Haskell Playground" cwd="sandbox/languages/haskell/haskell-playground"
+    tab name="Haskell Playground Term" cwd="sandbox/languages/haskell/haskell-playground"
 }
