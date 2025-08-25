@@ -1,6 +1,16 @@
 return {
     'airblade/vim-gitgutter',
 
+    {
+      'andymass/vim-matchup',
+      ---@type matchup.Config
+      opts = {
+        treesitter = {
+          stopline = 500,
+        }
+      }
+    },
+
     'arkav/lualine-lsp-progress',
 
     {
@@ -63,7 +73,33 @@ return {
     },
 
     'imsnif/kdl.vim',
+
     'jpalardy/vim-slime',
+
+    {
+      'Julian/lean.nvim',
+      event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
+
+      dependencies = {
+        'neovim/nvim-lspconfig',
+        'nvim-lua/plenary.nvim',
+
+        -- optional dependencies:
+
+        -- a completion engine
+        --    hrsh7th/nvim-cmp or Saghen/blink.cmp are popular choices
+
+        -- 'nvim-telescope/telescope.nvim', -- for 2 Lean-specific pickers
+        -- 'andymass/vim-matchup',          -- for enhanced % motion behavior
+        -- 'andrewradev/switch.vim',        -- for switch support
+        -- 'tomtom/tcomment_vim',           -- for commenting
+      },
+
+      ---@type lean.Config
+      opts = { -- see below for full configuration options
+        mappings = true,
+      }
+    },
 
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-buffer',
@@ -72,6 +108,15 @@ return {
     'hrsh7th/nvim-cmp',
     'hrsh7th/cmp-vsnip',
     'hrsh7th/vim-vsnip',
+
+    {
+        'kosayoda/nvim-lightbulb',
+        config = function()
+            require("nvim-lightbulb").setup({
+              autocmd = { enabled = true }
+            })
+        end
+    },
 
     'mfussenegger/nvim-dap',
     {
