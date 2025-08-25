@@ -79,7 +79,7 @@ vim.keymap.set({'n', 't'}, '<C-j>', '<CMD>NavigatorDown<CR>')
 
 -- Leader keys
 vim.g.mapleader = ";"
-vim.g.maplocalleader = ";"
+vim.g.maplocalleader = "."
 
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>to", ":tabonly<CR>", { noremap = true })
