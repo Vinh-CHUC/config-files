@@ -57,12 +57,12 @@ install-linux-security:
 
 ## MNT Pocket Reform
 setup-kanata-root-part:
-	groupadd uinput
+	groupadd --system uinput
 	usermod -aG uinput vinh
 	usermod -aG input vinh
 	cp keyboards/kanata/99-uinput.rules /etc/udev/rules.d/
 	cp keyboards/kanata/uinput.conf /etc/modules-load.d/
-	ln -sf ~/.cargo/bin/kanata /usr/bin/kanata
+	ln -sf /home/vinh/.cargo/bin/kanata /usr/bin/kanata
 
 
 ##########
