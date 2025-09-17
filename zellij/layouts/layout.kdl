@@ -24,4 +24,5 @@ layout {
     tab name="Obsidian" cwd="../Documents/Personal"
     tab name="Lua Playground" cwd="sandbox/languages/lua"
     tab name="Haskell Playground" cwd="sandbox/languages/haskell/haskell-playground"
+    tab name="Cloud Playground" cwd="sandbox/cloud"
 }

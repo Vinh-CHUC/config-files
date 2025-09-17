@@ -19,4 +19,6 @@ layout {
     tab name="Lua Playground Term" cwd="sandbox/languages/lua"
     tab name="Haskell Playground" cwd="sandbox/languages/haskell/haskell-playground"
     tab name="Haskell Playground Term" cwd="sandbox/languages/haskell/haskell-playground"
+    tab name="Cloud Playground" cwd="sandbox/cloud"
+    tab name="Cloud Playground Term" cwd="sandbox/cloud"
 }
