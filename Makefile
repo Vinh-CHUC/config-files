@@ -38,6 +38,8 @@ install-linux-bins:
 		libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 	# CPP
 	apt install clangd
+	# go
+	apt install golang-go
 	# Haskell build dependencies
 	apt install libgmp-dev
 	# For opening appimages
