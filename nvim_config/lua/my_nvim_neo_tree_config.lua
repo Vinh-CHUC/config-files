@@ -22,6 +22,11 @@ local neotree = {
                 enabled = true, -- This will automatically reveal the active file
                 leave_dirs_open = true
             },
+            filtered_items = {
+                always_show_by_pattern = {
+                    ".github",      -- always show its contents
+                },
+            }
         },
     }
 }
