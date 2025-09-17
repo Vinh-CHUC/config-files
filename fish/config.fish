@@ -52,4 +52,7 @@ if status is-interactive
     if test -n "$MANPATH[1]"; set --global --export MANPATH '' $MANPATH; end;
     if not contains "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH; set --global --export INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH; end;
     if test -n "$XDG_DATA_DIRS"; set --global --export XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share" $XDG_DATA_DIRS; end;
+
+    # Justfiles completions
+    source $HOME/.config/fish/just-completions.fish
 end
