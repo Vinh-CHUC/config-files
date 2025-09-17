@@ -114,6 +114,12 @@ install-rust-analyzer:
 	rustup component add rust-analyzer
 
 ##########
+## Node ##
+##########
+install-volta:
+	curl https://get.volta.sh | bash -s -- --skip-setup
+
+##########
 ## Lean ##
 ##########
 install-lean4:

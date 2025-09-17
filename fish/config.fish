@@ -18,6 +18,7 @@ if status is-interactive
     set -gx PYENV_ROOT $HOME/.pyenv
     set PATHS \
         /usr/local/bin \
+        $HOME/.volta/bin \
         $HOME/bin \
         $HOME/.local/bin \
         $HOME/.local/bin/lua-language-server/bin \
