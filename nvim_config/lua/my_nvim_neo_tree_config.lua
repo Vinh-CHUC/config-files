@@ -25,6 +25,9 @@ local neotree = {
             filtered_items = {
                 always_show_by_pattern = {
                     ".github",      -- always show its contents
+                    ".gitignore",
+                    ".envrc",
+                    ".env"
                 },
             }
         },
