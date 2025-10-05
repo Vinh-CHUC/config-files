@@ -56,15 +56,6 @@ require('lualine').setup {
 -------------------------
 -- Autocompletion BEGIN -
 -------------------------
-local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
-end
-
 local cmp = require("cmp")
 cmp.setup({
     snippet = {
@@ -118,10 +109,6 @@ vim.cmd("smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'    
 -----------------------
 -- Autocompletion END -
 -----------------------
-
---------------
--- Org mode --
---------------
 
 -- Tree-sitter configuration
 require'nvim-treesitter.configs'.setup {
@@ -228,76 +215,35 @@ require('orgmode').setup({
 -------------------
 -- NVIM LSP BEGIN -
 -------------------
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.keymap.set('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-
-local on_attach = function(client, bufnr)
-  local opts_with_buffer = { buffer = bufnr, noremap = true, silent = true }
-  vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts_with_buffer)
-  vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts_with_buffer)
-  vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts_with_buffer)
-  vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts_with_buffer)
-  -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts_with_buffer)
-  vim.keymap.set('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts_with_buffer)
-  vim.keymap.set('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts_with_buffer)
-  vim.keymap.set({'n', 'v'}, '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts_with_buffer)
-  vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts_with_buffer)
-  vim.keymap.set('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts_with_buffer)
-end
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local bufnr = args.buf
+    local opts_with_buffer = { buffer = bufnr, noremap = true, silent = true }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts_with_buffer)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts_with_buffer)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts_with_buffer)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts_with_buffer)
+    vim.keymap.set('n', '<leader>td', vim.lsp.buf.type_definition, opts_with_buffer)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts_with_buffer)
+    vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, opts_with_buffer)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts_with_buffer)
+  end,
+})
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { "erlangls", "hhvm", "lua_ls", "rust_analyzer", "hls", "pyright", "gopls", "terraformls", "ruff"}
+local servers = { "erlangls", "hhvm", "lua_ls", "rust_analyzer", "hls", "pyright", "gopls", "terraformls", "ruff" }
 
 for _, lsp in ipairs(servers) do
-  require("lspconfig")[lsp].setup {
-    on_attach = on_attach,
-    capabilities=capabilities
-  }
+    vim.lsp.enable(lsp)
+    vim.lsp.config(lsp, { capabilities = capabilities })
 end
 
-require("lspconfig")["clangd"].setup{
-  cmd = { "clangd", "--clang-tidy"},
-  on_attach = on_attach,
-  capabilities=capabilities
-}
+vim.lsp.enable("clangd")
+vim.lsp.config("clangd", {cmd = { "clangd", "--clang-tidy"}, capabilities=capabilities })
 
 -- NULL-LS
 local null_ls = require("null-ls")
-null_ls.setup({
-    on_attach = on_attach,
-    sources = {
-        null_ls.builtins.formatting.black,
-    }
-})
+null_ls.setup({sources = { null_ls.builtins.formatting.black}})
 ------------------
 -- NVIM LSP END --
 ------------------
-
--- Aerial
-require('aerial').setup({
-  -- optionally use on_attach to set keymaps when aerial has attached to a buffer
-  on_attach = function(bufnr)
-    -- Jump forwards/backwards with '{' and '}'
-    vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', {buffer = bufnr})
-    vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', {buffer = bufnr})
-  end
-})
--- You probably also want to set a keymap to toggle aerial
-vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle!<CR>')
-
--- refactoring
-require('refactoring').setup()
-vim.keymap.set("x", "<leader>re", function() require('refactoring').refactor('Extract Function') end)
-vim.keymap.set("x", "<leader>rf", function() require('refactoring').refactor('Extract Function To File') end)
-vim.keymap.set("x", "<leader>rv", function() require('refactoring').refactor('Extract Variable') end)
-
-vim.keymap.set("n", "<leader>rI", function() require('refactoring').refactor('Inline Function') end)
-vim.keymap.set({ "n", "x" }, "<leader>ri", function() require('refactoring').refactor('Inline Variable') end)
-vim.keymap.set("n", "<leader>rb", function() require('refactoring').refactor('Extract Block') end)
-vim.keymap.set("n", "<leader>rbf", function() require('refactoring').refactor('Extract Block To File') end)

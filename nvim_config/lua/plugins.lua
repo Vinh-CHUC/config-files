@@ -262,16 +262,6 @@ return {
             suppressed_dirs = { "~/", "~/Downloads"},
         },
     },
-    'stevearc/aerial.nvim',
-
-    {
-        "ThePrimeagen/refactoring.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-    },
-
     'tpope/vim-commentary',
     'tpope/vim-surround',
     'tpope/vim-fugitive',
