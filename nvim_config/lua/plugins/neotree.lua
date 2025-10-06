@@ -1,4 +1,4 @@
-local neotree = {
+return {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
@@ -6,7 +6,7 @@ local neotree = {
         "MunifTanjim/nui.nvim",
         "nvim-tree/nvim-web-devicons", -- optional, but recommended
     },
-    lazy = false, -- neo-tree will lazily load itself
+    lazy = false,                      -- neo-tree will lazily load itself
     ---@module 'neo-tree'
     ---@type neotree.Config
     opts = {
@@ -24,7 +24,7 @@ local neotree = {
             },
             filtered_items = {
                 always_show_by_pattern = {
-                    ".github",      -- always show its contents
+                    ".github", -- always show its contents
                     ".gitignore",
                     ".envrc",
                     ".env"
@@ -33,5 +33,3 @@ local neotree = {
         },
     }
 }
-
-return neotree

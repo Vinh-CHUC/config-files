@@ -1,10 +1,8 @@
 require('my_basic_config')
-require('my_dap_config')
 require("config.lazy")
-require('my_telescope_config')
-require('my_slime_config')
-require('my_codecompanion_config')
+require('my_dap_config')
 require('my_tabby_config')
+require('my_telescope_config')
 
 require('lualine').setup {
   extensions = {},

@@ -67,11 +67,6 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'longest'}
 -----------------
 -- Key mapping --
 -----------------
--- Simpler movement
--- vim.keymap.set("n", "<C-j>", "<C-W>j", {remap = false})
--- vim.keymap.set("n", "<C-k>", "<C-W>k", {remap = false})
--- vim.keymap.set("n", "<C-h>", "<C-W>h", {remap = false})
--- vim.keymap.set("n", "<C-l>", "<C-W>l", {remap = false})
 vim.keymap.set({'n', 't'}, '<C-h>', '<CMD>NavigatorLeft<CR>')
 vim.keymap.set({'n', 't'}, '<C-l>', '<CMD>NavigatorRight<CR>')
 vim.keymap.set({'n', 't'}, '<C-k>', '<CMD>NavigatorUp<CR>')
