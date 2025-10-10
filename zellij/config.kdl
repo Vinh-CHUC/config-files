@@ -188,7 +188,7 @@ keybinds clear-defaults=true {
         bind "Alt p" { SwitchToMode "Pane"; }
     }
     shared_except "resize" "locked" {
-        bind "Alt n" { SwitchToMode "Resize"; }
+        bind "Alt r" { SwitchToMode "Resize"; }
     }
     shared_except "scroll" "locked" {
         bind "Alt s" { SwitchToMode "Scroll"; }
