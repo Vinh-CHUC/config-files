@@ -45,6 +45,7 @@ install-linux-bins:
 	# For opening appimages
 	apt install libfuse2t64
 	apt install alacritty just
+	apt install gh
 
 install-linux-i3:
 	apt install brightnessctl i3 blueman maim pavucontrol pasystray polybar rofi xclip
