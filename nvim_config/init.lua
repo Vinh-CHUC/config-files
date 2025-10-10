@@ -214,18 +214,26 @@ require('orgmode').setup({
 -- NVIM LSP BEGIN -
 -------------------
 vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    local bufnr = args.buf
-    local opts_with_buffer = { buffer = bufnr, noremap = true, silent = true }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts_with_buffer)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts_with_buffer)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts_with_buffer)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts_with_buffer)
-    vim.keymap.set('n', '<leader>td', vim.lsp.buf.type_definition, opts_with_buffer)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts_with_buffer)
-    vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, opts_with_buffer)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts_with_buffer)
-  end,
+    callback = function(args)
+        local bufnr = args.buf
+        local opts_with_buffer = { buffer = bufnr, noremap = true, silent = true }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration,
+            vim.tbl_extend("error", opts_with_buffer, { desc = "[LSP] Go to declaration" }))
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
+            vim.tbl_extend("error", opts_with_buffer, { desc = "[LSP] Go to definition" }))
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover,
+            vim.tbl_extend("error", opts_with_buffer, { desc = "[LSP] Hover" }))
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation,
+            vim.tbl_extend("error", opts_with_buffer, { desc = "[LSP] Go to implementation" }))
+        vim.keymap.set('n', '<leader>td', vim.lsp.buf.type_definition,
+            vim.tbl_extend("error", opts_with_buffer, { desc = "[LSP] Go to type definition" }))
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename,
+            vim.tbl_extend("error", opts_with_buffer, { desc = "[LSP] Rename" }))
+        vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action,
+            vim.tbl_extend("error", opts_with_buffer, { desc = "[LSP] Code actions" }))
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references,
+            vim.tbl_extend("error", opts_with_buffer, { desc = "[LSP] References" }))
+    end,
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -245,3 +253,28 @@ null_ls.setup({sources = { null_ls.builtins.formatting.black}})
 ------------------
 -- NVIM LSP END --
 ------------------
+
+--------
+-- AI --
+--------
+vim.keymap.set(
+    'n', '<leader>cca', '<CMD>CodeCompanionActions<CR>',
+    {
+        remap = false,
+        desc = "CodeCompanionActions"
+    }
+)
+vim.keymap.set(
+    'n', '<leader>ccc', '<CMD>CodeCompanionChat<CR>',
+    {
+        remap = false,
+        desc = "CodeCompanionChat"
+    }
+)
+vim.keymap.set(
+    {'n', 'v'}, '<leader>cce', ':CodeCompanion',
+    {
+        remap = false,
+        desc = "CodeCompanionChat"
+    }
+)
