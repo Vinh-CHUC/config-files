@@ -27,7 +27,13 @@ return {
                     ".github", -- always show its contents
                     ".gitignore",
                     ".envrc",
-                    ".env"
+                    ".tool-versions",
+                    ".bazelrc",
+                    ".bazelversion",
+                    ".env",
+                    "bazel-*",
+                    "external",
+                    "fuse-output",
                 },
             }
         },

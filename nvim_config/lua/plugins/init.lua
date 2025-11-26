@@ -13,7 +13,6 @@ return {
       event = { 'BufReadPre *.lean', 'BufNewFile *.lean' },
 
       dependencies = {
-        'neovim/nvim-lspconfig',
         'nvim-lua/plenary.nvim',
 
         -- optional dependencies:
