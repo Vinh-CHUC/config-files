@@ -237,7 +237,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local servers = { "erlangls", "hhvm", "lua_ls", "rust_analyzer", "hls", "pyright", "gopls", "terraformls", "ruff" }
+local servers = { "erlangls", "hhvm", "lua_ls", "rust_analyzer", "hls", "pyright", "gopls", "terraformls", "ruff", "starpls" }
 
 for _, lsp in ipairs(servers) do
     vim.lsp.enable(lsp)
