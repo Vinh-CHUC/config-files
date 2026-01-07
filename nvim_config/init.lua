@@ -275,6 +275,6 @@ vim.keymap.set(
     {'n', 'v'}, '<leader>cce', ':CodeCompanion',
     {
         remap = false,
-        desc = "CodeCompanionChat"
+        desc = "CodeCompanion"
     }
 )
