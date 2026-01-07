@@ -31,6 +31,7 @@ return {
                     ".bazelrc",
                     ".bazelversion",
                     ".env",
+                    ".pre-commit-config.yaml",
                     "bazel-*",
                     "external",
                     "fuse-output",
