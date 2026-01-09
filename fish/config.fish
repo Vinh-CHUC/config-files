@@ -38,7 +38,7 @@ if status is-interactive
     pyenv init --path | source
 
     # LLMs
-    set -x GEMINI_MODEL "gemini-3-flash"
+    set -x GEMINI_MODEL "gemini-3-flash-preview"
     if test -f $HOME/.gemini_api_key; set -x GEMINI_API_KEY (string trim (cat $HOME/.gemini_api_key)); end;
 
     # Misc
