@@ -1,13 +1,24 @@
 return {
     "olimorris/codecompanion.nvim",
     opts = {
-        strategies = {
-            chat = {
-                adapter = "gemini",
-            },
-            inline = {
-                adapter = "gemini",
-            },
+        interactions = {
+          chat = {
+            adapter = "gemini_cli",
+          },
+          inline = {
+            adapter = "gemini",
+          },
+        },
+        adapters = {
+          acp = {
+            gemini_cli = function()
+              return require("codecompanion.adapters").extend("gemini_cli", {
+                defaults = {
+                  auth_method = "gemini-api-key"
+                }
+              })
+            end,
+          },
         },
     },
     dependencies = {
