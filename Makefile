@@ -117,8 +117,12 @@ install-rust-analyzer:
 ##########
 ## Node ##
 ##########
-install-volta:
-	curl https://get.volta.sh | bash -s -- --skip-setup
+install-mise:
+	curl https://mise.run | sh
+	mkdir -p ~/.config/mise
+	mise use -g usage
+	mise activate fish > ~/.config/mise/mise.fish
+	mise completion fish > ~/.config/fish/completions/mise.fish
 
 ##########
 ## Lean ##

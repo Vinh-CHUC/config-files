@@ -15,10 +15,8 @@ if status is-interactive
     abbr psource 'source $(poetry env info --path)/bin/activate.fish'
 
     # Paths
-    set -gx PYENV_ROOT $HOME/.pyenv
     set PATHS \
         /usr/local/bin \
-        $HOME/.volta/bin \
         $HOME/bin \
         $HOME/.local/bin \
         $HOME/.local/bin/lua-language-server/bin \
@@ -28,18 +26,22 @@ if status is-interactive
         $HOME/.ghcup/bin \
         $HOME/.cabal/bin \
         $HOME/.pack/bin \
-        $PYENV_ROOT/bin \
         /usr/local/go/bin \
         $HOME/go/bin
     for p in $PATHS
         test -d $p; and fish_add_path $p
     end
 
-    pyenv init --path | source
-
     # LLMs
     set -x GEMINI_MODEL "gemini-3-flash-preview"
     if test -f $HOME/.gemini_api_key; set -x GEMINI_API_KEY (string trim (cat $HOME/.gemini_api_key)); end;
+
+    # C++
+    set -x CC gcc-14
+    set -x CCX g++-14
+
+    # Mise
+    source $HOME/.config/mise/mise.fish
 
     # Misc
     set -x FZF_DEFAULT_COMMAND 'fd --type file --hidden --no-ignore'
@@ -54,6 +56,4 @@ if status is-interactive
     if not contains "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH; set --global --export INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH; end;
     if test -n "$XDG_DATA_DIRS"; set --global --export XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share" $XDG_DATA_DIRS; end;
 
-    # Justfiles completions
-    source $HOME/.config/fish/just-completions.fish
 end
