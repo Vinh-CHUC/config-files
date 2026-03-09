@@ -35,6 +35,7 @@ if status is-interactive
     # LLMs
     set -x GEMINI_MODEL "gemini-3-flash-preview"
     if test -f $HOME/.gemini_api_key; set -x GEMINI_API_KEY (string trim (cat $HOME/.gemini_api_key)); end;
+    if test -f $HOME/.openclaw_gateway_token; set -x OPENCLAW_GATEWAY_TOKEN (string trim (cat $HOME/.openclaw_gateway_token)); end;
 
     # C++
     set -x CC gcc-14
