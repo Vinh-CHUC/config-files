@@ -32,6 +32,7 @@ return {
                     ".bazelversion",
                     ".env",
                     ".pre-commit-config.yaml",
+                    ".python-version",
                     "bazel-*",
                     "external",
                     "fuse-output",

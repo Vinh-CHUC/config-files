@@ -146,7 +146,7 @@ keybinds clear-defaults=true {
         }
         bind "Ctrl q" { Quit; }
         bind "Ctrl y" {
-            LaunchOrFocusPlugin "file:/home/vinh-chuc/.config/zellij/plugins/room.wasm" {
+            LaunchOrFocusPlugin "file:~/.config/zellij/plugins/room.wasm" {
                 floating true
                 ignore_case "true"
             }
