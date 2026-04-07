@@ -245,7 +245,18 @@ for _, lsp in ipairs(servers) do
 end
 
 vim.lsp.enable("clangd")
-vim.lsp.config("clangd", {cmd = { "clangd", "--clang-tidy"}, capabilities=capabilities })
+vim.lsp.config("clangd", {
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--clang-tidy=false",
+      "--completion-style=detailed",
+      "--pch-storage=memory",
+      "-j=4",
+      "--limit-results=50"
+    },
+    capabilities = capabilities
+})
 
 -- NULL-LS
 local null_ls = require("null-ls")
