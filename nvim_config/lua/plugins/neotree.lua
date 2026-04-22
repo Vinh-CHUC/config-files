@@ -15,6 +15,7 @@ return {
                 ["<C-x>"] = "open_split",
                 ["<C-v>"] = "open_vsplit",
                 ["<C-t>"] = "open_tabnew",
+                ["s"] = function() require("flash").jump() end,
             },
         },
         filesystem = {
