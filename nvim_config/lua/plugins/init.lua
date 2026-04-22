@@ -64,7 +64,6 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-lualine/lualine.nvim',
 
-    'nvim-orgmode/orgmode',
     'nvim-tree/nvim-web-devicons',
 
     {

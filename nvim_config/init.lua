@@ -205,11 +205,6 @@ local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move_next)
 vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_previous)
 
-require('orgmode').setup({
-  org_agenda_files = {'~/org-files/agenda/*'},
-  org_default_notes_file = '~/org-files/notes.org',
-})
-
 -------------------
 -- NVIM LSP BEGIN -
 -------------------
