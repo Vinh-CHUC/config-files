@@ -123,6 +123,9 @@ install-mise:
 	mise use -g usage
 	mise activate fish > ~/.config/mise/mise.fish
 	mise completion fish > ~/.config/fish/completions/mise.fish
+	mise use -g bazelisk@latest
+	mise use -g node@latest
+	mise use -g opencode@latest
 
 ##########
 ## Lean ##

@@ -41,9 +41,6 @@ if status is-interactive
     set -x CC gcc-14
     set -x CCX g++-14
 
-    # Mise
-    source $HOME/.config/mise/mise.fish
-
     # Misc
     set -x FZF_DEFAULT_COMMAND 'fd --type file --hidden --no-ignore'
     set -x POETRY_VIRTUALENVS_IN_PROJECT 1
@@ -57,4 +54,6 @@ if status is-interactive
     if not contains "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH; set --global --export INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH; end;
     if test -n "$XDG_DATA_DIRS"; set --global --export XDG_DATA_DIRS "/home/linuxbrew/.linuxbrew/share" $XDG_DATA_DIRS; end;
 
+    # Mise
+    source $HOME/.config/mise/mise.fish
 end
