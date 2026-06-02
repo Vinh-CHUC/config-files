@@ -21,7 +21,7 @@ layout {
     tab name="Rust Playground" cwd="sandbox/languages/rust"
     tab name="Python Playground" cwd="sandbox/languages/python/playground"
     tab name="Lean4 Playground" cwd="sandbox/languages/lean4/playground"
-    tab name="AI Agents" cwd="sandbox/ai-agents"
+    tab name="AI Agents" cwd="motif"
     tab name="config-files" cwd="config-files"
     tab name="Obsidian" cwd="../Documents/Personal"
     tab name="Lua Playground" cwd="sandbox/languages/lua"

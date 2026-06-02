@@ -23,7 +23,7 @@ install-osx-cpp:
 ## Linux ##
 ###########
 install-linux-cargo-pkgs:
-	cargo install -f --locked gitui kanata zellij
+	cargo install -f --locked gitui kanata zellij zoxide
 
 install-linux-starship:
 	curl -sS https://starship.rs/install.sh | sh
@@ -126,6 +126,7 @@ install-mise:
 	mise use -g bazelisk@latest
 	mise use -g node@latest
 	mise use -g opencode@latest
+	mise use -g ast-grep
 
 ##########
 ## Lean ##

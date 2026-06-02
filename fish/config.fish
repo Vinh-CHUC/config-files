@@ -44,6 +44,7 @@ if status is-interactive
     # Misc
     set -x FZF_DEFAULT_COMMAND 'fd --type file --hidden --no-ignore'
     set -x POETRY_VIRTUALENVS_IN_PROJECT 1
+    zoxide init fish | source
 
     # Homebrew linux
     set --global --export HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew";
