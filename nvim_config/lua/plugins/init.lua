@@ -160,6 +160,15 @@ return {
             suppressed_dirs = { "~/", "~/Downloads"},
         },
     },
+    {
+        'sindrets/diffview.nvim',
+        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+        init = function()
+            vim.api.nvim_create_user_command('Dvo', 'DiffviewOpen <args>', { nargs = '*' })
+            vim.api.nvim_create_user_command('Dvh', 'DiffviewFileHistory <args>', { nargs = '*' })
+        end,
+        opts = {},
+    },
     'tpope/vim-commentary',
     'tpope/vim-surround',
     'tpope/vim-fugitive',
