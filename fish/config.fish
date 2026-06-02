@@ -1,6 +1,24 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
+    function notify-waiting
+        if test -z "$ZELLIJ_PANE_ID"
+            echo "Not in Zellij"
+            return 1
+        end
+
+        zellij pipe --name "zellij-attention::waiting::$ZELLIJ_PANE_ID"
+    end
+
+    function notify-completed
+        if test -z "$ZELLIJ_PANE_ID"
+            echo "Not in Zellij"
+            return 1
+        end
+
+        zellij pipe --name "zellij-attention::completed::$ZELLIJ_PANE_ID"
+    end
+
     # Basics
     fish_vi_key_bindings
     starship init fish | source
