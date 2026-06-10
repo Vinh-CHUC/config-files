@@ -204,3 +204,8 @@ setup-i3:
 setup-zellij:
 	rm -rf ~/.config/zellij
 	ln -s $(shell pwd)/zellij ~/.config/zellij
+
+setup-ghostty:
+	rm -rf ~/.config/ghostty
+	mkdir -p ~/.config/ghostty
+	ln -s $(shell pwd)/config.ghostty ~/.config/ghostty/config.ghostty
