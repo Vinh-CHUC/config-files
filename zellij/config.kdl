@@ -170,7 +170,7 @@ keybinds clear-defaults=true {
     shared_except "locked" {
         bind "Alt g" { SwitchToMode "locked"; }
         bind "Ctrl q" { Quit; }
-        bind "Alt f" { ToggleFloatingPanes; }
+        bind "Alt w" { ToggleFloatingPanes; }
         bind "Alt left" { GoToPreviousTab; }
         bind "Alt right" { GoToNextTab; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
