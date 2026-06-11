@@ -10,7 +10,7 @@ vim.opt.clipboard = {'unnamed', 'unnamedplus'}
 -- UI --
 --------
 vim.o.scrolloff=16 -- Min amount of lines above/below the cursor
-vim.o.cmdheight=2
+vim.o.cmdheight=1
 vim.o.number=true
 vim.o.showmatch=true
 vim.o.matchtime=2
