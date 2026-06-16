@@ -44,6 +44,13 @@ install-linux-bins:
 	apt install libgmp-dev
 	# For opening appimages
 	apt install libfuse2t64
+	# For compiling ghostty
+	apt install \
+	  libgtk-4-dev \
+	  libgtk4-layer-shell-dev \
+	  libadwaita-1-dev \
+	  gettext \
+	  libxml2-utils
 	apt install alacritty just
 	apt install gh
 
@@ -152,6 +159,10 @@ install-luals:
 ##############
 ## Dotfiles ##
 ##############
+setup-alacritty:
+	mkdir -p ~/.config/alacritty
+	ln -sf $(shell pwd)/alacritty.toml ~/.config/alacritty/alacritty.toml
+
 setup-fish:
 	rm -rf ~/.config/fish
 	ln -s $(shell pwd)/fish ~/.config/fish
