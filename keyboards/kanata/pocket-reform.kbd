@@ -1,5 +1,7 @@
 (defcfg
-  linux-dev           /dev/input/event0
+  linux-dev-names-include (
+    "MNT Pocket Reform Input 1.0 Keyboard"
+  )
   concurrent-tap-hold yes
 )
 
