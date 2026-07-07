@@ -59,6 +59,7 @@ install-linux-i3:
 
 install-linux-sway:
 	apt install mesa-utils sway upower waybar wl-clipboard wlr-randr wofi
+	apt install grim slurp swaylock swayidle
 
 install-linux-security:
 	apt install pinentry-gtk2 scdaemon
