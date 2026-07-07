@@ -270,5 +270,5 @@ exec nm-applet --indicator
 # start bluetooth applet
 exec blueman-applet
 
-# start notification daemon
-exec mako
+# Notification daemon: dunst (see desktop/dunst/dunstrc), not exec'd here — it's
+# D-Bus-activated on demand (works the same way under i3), no explicit start needed.

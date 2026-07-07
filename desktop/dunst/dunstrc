@@ -1,0 +1,33 @@
+# Dunst notification daemon config.
+# Symlinked to ~/.config/dunst/dunstrc by `make setup-sway-waybar`.
+# Themed to match the sway wallpaper (Canonical "Dark Aubergine").
+#
+# Unlike mako (Wayland-only), dunst natively supports both X11 (i3) and Wayland
+# (sway, via layer-shell) with the same daemon/config — no `exec` needed in either
+# window manager's config, it's started on demand via D-Bus activation
+# (/usr/share/dbus-1/services/org.knopwob.dunst.service).
+
+[global]
+    origin = top-right
+    font = Inter 11
+    frame_width = 2
+    frame_color = "#E95420"
+    corner_radius = 6
+    padding = 10
+    horizontal_padding = 10
+
+[urgency_low]
+    background = "#2C001EEE"
+    foreground = "#FFFFFF"
+    timeout = 5
+
+[urgency_normal]
+    background = "#2C001EEE"
+    foreground = "#FFFFFF"
+    timeout = 5
+
+[urgency_critical]
+    background = "#2C001EEE"
+    foreground = "#FFFFFF"
+    frame_color = "#FF0000"
+    timeout = 0

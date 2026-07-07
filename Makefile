@@ -61,7 +61,9 @@ install-linux-sway:
 	apt install mesa-utils sway upower waybar wl-clipboard wlr-randr wofi
 	apt install grim slurp swaylock swayidle
 	apt install wlogout
-	apt install mako-notifier
+	# Notification daemon shared with i3 (see desktop/dunst/dunstrc) — dunst supports
+	# both X11 and Wayland natively, unlike mako which is Wayland-only.
+	apt install dunst
 	# ScreenCast portal backend for wlroots compositors — required for
 	# screen sharing/video calls to work at all under sway. Sway ships a
 	# /usr/share/xdg-desktop-portal/sway-portals.conf preferring "wlr;gtk", but
@@ -212,12 +214,12 @@ setup-starship:
 setup-sway-waybar:
 	mkdir -p ~/.config/sway
 	mkdir -p ~/.config/waybar
-	mkdir -p ~/.config/mako
+	mkdir -p ~/.config/dunst
 	mkdir -p ~/.config/gtk-3.0
 	ln -sf $(shell pwd)/desktop/sway/config ~/.config/sway/config
 	ln -sf $(shell pwd)/desktop/sway/scripts ~/.config/sway/scripts
 	ln -sf $(shell pwd)/desktop/waybar/config ~/.config/waybar/config
-	ln -sf $(shell pwd)/desktop/mako/config ~/.config/mako/config
+	ln -sf $(shell pwd)/desktop/dunst/dunstrc ~/.config/dunst/dunstrc
 	ln -sf $(shell pwd)/desktop/gtk/gtk.css ~/.config/gtk-3.0/gtk.css
 
 setup-reform: setup-sway-waybar
