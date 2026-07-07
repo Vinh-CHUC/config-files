@@ -60,6 +60,14 @@ install-linux-i3:
 install-linux-sway:
 	apt install mesa-utils sway upower waybar wl-clipboard wlr-randr wofi
 	apt install grim slurp swaylock swayidle
+	apt install wlogout
+	apt install mako-notifier
+	# ScreenCast portal backend for wlroots compositors — required for
+	# screen sharing/video calls to work at all under sway. Sway ships a
+	# /usr/share/xdg-desktop-portal/sway-portals.conf preferring "wlr;gtk", but
+	# that's inert without this package actually installed (xdg-desktop-portal-gnome/
+	# -gtk alone can't implement ScreenCast under sway).
+	apt install xdg-desktop-portal-wlr
 
 install-linux-security:
 	apt install pinentry-gtk2 scdaemon
@@ -204,8 +212,39 @@ setup-starship:
 setup-sway-waybar:
 	mkdir -p ~/.config/sway
 	mkdir -p ~/.config/waybar
+	mkdir -p ~/.config/mako
+	mkdir -p ~/.config/gtk-3.0
 	ln -sf $(shell pwd)/desktop/sway/config ~/.config/sway/config
+	ln -sf $(shell pwd)/desktop/sway/scripts ~/.config/sway/scripts
 	ln -sf $(shell pwd)/desktop/waybar/config ~/.config/waybar/config
+	ln -sf $(shell pwd)/desktop/mako/config ~/.config/mako/config
+	ln -sf $(shell pwd)/desktop/gtk/gtk.css ~/.config/gtk-3.0/gtk.css
+
+setup-reform: setup-sway-waybar
+	mkdir -p ~/.config/sway/config.d
+	mkdir -p ~/.config/waybar/config.d
+	ln -sf $(shell pwd)/desktop/sway/hosts/reform.conf ~/.config/sway/config.d/local.conf
+	ln -sf $(shell pwd)/desktop/waybar/hosts/reform.json ~/.config/waybar/config.d/local.json
+	swaymsg reload 2>/dev/null || true
+
+# Alienware external monitor differs by location (see ~/.screenlayout/{home,work}.sh),
+# so outputs are split into alienware-home.conf / alienware-work.conf; re-run the
+# matching target after switching locations. waybar side is location-independent.
+# `swaymsg reload` applies the change immediately if sway is already running (no-op
+# otherwise); waybar itself doesn't support reload, so restart it separately if needed.
+setup-alienware-home: setup-sway-waybar
+	mkdir -p ~/.config/sway/config.d
+	mkdir -p ~/.config/waybar/config.d
+	ln -sf $(shell pwd)/desktop/sway/hosts/alienware-home.conf ~/.config/sway/config.d/local.conf
+	ln -sf $(shell pwd)/desktop/waybar/hosts/alienware.json ~/.config/waybar/config.d/local.json
+	swaymsg reload 2>/dev/null || true
+
+setup-alienware-work: setup-sway-waybar
+	mkdir -p ~/.config/sway/config.d
+	mkdir -p ~/.config/waybar/config.d
+	ln -sf $(shell pwd)/desktop/sway/hosts/alienware-work.conf ~/.config/sway/config.d/local.conf
+	ln -sf $(shell pwd)/desktop/waybar/hosts/alienware.json ~/.config/waybar/config.d/local.json
+	swaymsg reload 2>/dev/null || true
 
 setup-i3:
 	mkdir -p ~/.config/i3

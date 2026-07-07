@@ -16,7 +16,15 @@ set $right right
 
 set $term alacritty
 
-set $menu wofi --show drun -p Search -n -i -I -W 66% -s $HOME/.config/wofi.css
+set $menu wofi --show drun -p Search -n -i -I -W 66% -l top_left
+
+# host-specific overrides (e.g. $menu styling, outputs, machine-only execs)
+# must load before $menu/outputs are used below — see hosts/*.conf
+#
+# NOTE: ~/.config/sway/config is a symlink into this repo. `include`'s relative
+# path resolves against the file's real (repo) location, not ~/.config/sway/, so
+# a relative "config.d/*" here would silently match nothing. Anchor on ~ instead.
+include ~/.config/sway/config.d/*
 
 ################
 ### DISPLAYS ###
@@ -28,8 +36,7 @@ set $menu wofi --show drun -p Search -n -i -I -W 66% -s $HOME/.config/wofi.css
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output DSI-1 transform 270
-output DSI-1 scale 2
+# Host-specific output config lives in hosts/*.conf, loaded via config.d/local.conf above.
 
 #xwayland disable
 
@@ -263,13 +270,5 @@ exec nm-applet --indicator
 # start bluetooth applet
 exec blueman-applet
 
-# start volume applet
-exec pasystray
-
-# start MNT Reform tray menu
-exec /usr/libexec/reform-tools/reform-tray.py
-
-# start wallpaper script
-exec /usr/libexec/reform-tools/reform-wallpaper.py
-
-include config.d/*
+# start notification daemon
+exec mako

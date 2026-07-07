@@ -1,0 +1,12 @@
+# Mako notification daemon config.
+# Symlinked to ~/.config/mako/config by `make setup-sway-waybar`.
+# Themed to match the sway wallpaper (Canonical "Dark Aubergine").
+
+background-color=#2C001EEE
+text-color=#FFFFFFFF
+border-color=#E95420FF
+border-size=2
+border-radius=6
+padding=10
+default-timeout=5000
+font=Inter 11

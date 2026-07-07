@@ -33,6 +33,7 @@ if status is-interactive
     abbr standalone 'xrandr --output DP-1 --off --output HDMI-1-0 --off --output eDP-1 --primary --mode 1920x1080 --pos 0x0 && ~/.config/polybar/launch.sh --shapes'
     abbr workdesktop '~/.screenlayout/work.sh && cd ~/.config/polybar && ./launch.sh --shapes'
     abbr homedesktop '~/.screenlayout/home.sh && cd ~/.config/polybar && ./launch.sh --shapes'
+    abbr audiosink '~/.config/sway/scripts/switch-audio-sink.sh'
 
     abbr psource 'source $(poetry env info --path)/bin/activate.fish'
 

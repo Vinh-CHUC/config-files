@@ -1,0 +1,22 @@
+{
+    // MNT Pocket Reform-specific waybar config.
+    // Symlinked to ~/.config/waybar/config.d/local.json by `make setup-reform`.
+    // Waybar keeps the main config's definition over includes, so module lists and
+    // any module below must be defined ONLY here, not in ../config.
+    "modules-left": ["custom/run", "wlr/taskbar", "sway/workspaces"],
+    "modules-center": [],
+    "modules-right": ["custom/kanata", "pulseaudio", "tray", "battery", "clock", "custom/power"],
+    "custom/run": {
+        "format": "M",
+        "exec": "printf 'M\nApplications\n'",
+        "interval": 3600,
+        "on-click": "wofi --show drun -p 'Type to search and press enter.' -n -i -I -W 66% -H 66% -l top_left -s $HOME/.config/wofi.css"
+    },
+    "custom/kanata": {
+        "format": "{}",
+        "exec": "pgrep kanata > /dev/null && echo '⌨' || echo 'Kanata Stopped'",
+        "interval": 4,
+        "on-click": "$HOME/.config/kanata/toggle.sh",
+        "return-type": "text"
+    }
+}

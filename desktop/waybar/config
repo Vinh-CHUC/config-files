@@ -1,23 +1,18 @@
 {
+    // Host-specific config lives in hosts/*.json (module lists, custom/run's wofi
+    // styling, custom/kanata — Reform-only). Waybar keeps the FIRST definition of a
+    // duplicate key (main file wins over includes), so any key a host needs to
+    // customize must be defined ONLY there, not here — see hosts/reform.json.
+    //
+    // NOTE: ~/.config/waybar/config is a symlink into this repo. `include`'s
+    // relative path resolves against the file's real (repo) location, not
+    // ~/.config/waybar/, so a relative "config.d/local.json" here silently
+    // resolves to a nonexistent path in the repo ("Can't open config file").
+    // Anchor on ~ instead.
+    "include": ["~/.config/waybar/config.d/local.json"],
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 32, // Waybar height (to be removed for auto height)
-    "modules-left": ["custom/run", "wlr/taskbar", "sway/workspaces"],
-    "modules-center": [],
-    "modules-right": ["custom/kanata", "tray", "battery", "clock"],
-    "custom/run": {
-        "format": "M",
-        "exec": "printf 'M\nApplications\n'",
-        "interval": 3600,
-        "on-click": "wofi --show drun -p 'Type to search and press enter.' -n -i -I -W 66% -H 66% -s $HOME/.config/wofi.css"
-    },
-    "custom/kanata": {
-      "format": "{}",
-      "exec": "pgrep kanata > /dev/null && echo '⌨' || echo 'Kanata Stopped'",
-      "interval": 4,
-      "on-click": "$HOME/.config/kanata/toggle.sh",
-      "return-type": "text"
-    },
     "sway/window": {
     },
     "wlr/taskbar": {
@@ -38,18 +33,30 @@
     },
     "pulseaudio": {
         // "scroll-step": 1,
-        "format": "Vol {volume}%",
+        "format": "{icon} {volume}%",
         "format-bluetooth": " {volume}%",
         "format-bluetooth-muted": " Silent",
-        "format-muted": "Silent",
+        "format-muted": "🔇 Silent",
         "format-source": "Vol {volume}%",
         "format-source-muted": "Silent",
-        "on-click": "pavucontrol"
+        "format-icons": {
+            "default": ["🔈", "🔉", "🔊"]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "$HOME/.config/sway/scripts/switch-audio-sink.sh"
     },
     "battery": {
         "format": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-icons": ["", "", "", "", ""]
+    },
+    // Power menu (reboot/logout/suspend/shutdown) — replaces reform-tray.py's menu.
+    // wlogout renders its own dropdown; add "custom/power" to a host's
+    // modules-right to show it.
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip": false
     },
 }

@@ -1,0 +1,12 @@
+/* GTK3 theme override for popover/menu backgrounds (nm-applet, blueman-applet,
+ * pasystray tray popups). Symlinked to ~/.config/gtk-3.0/gtk.css by
+ * `make setup-sway-waybar`. Themed to match the sway wallpaper (Canonical
+ * "Dark Aubergine"). Note: this is a GTK-wide override, not scoped to just the
+ * tray apps — it'll affect any GTK3 app's popovers/menus (Thunar, pavucontrol, etc).
+ */
+popover,
+popover.background,
+menu {
+    background-color: #2C001E;
+    color: #FFFFFF;
+}
