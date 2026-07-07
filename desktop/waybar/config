@@ -31,11 +31,26 @@
         "format-alt": "{:%Y-%m-%d}",
         "tooltip": false
     },
+    "cpu": {
+        "format": " {usage}%",
+        "interval": 5
+    },
+    "memory": {
+        "format": "🧠 {percentage}%",
+        "interval": 5
+    },
+    "network": {
+        "format-wifi": "📶 ↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
+        "format-ethernet": "🌐 ↑{bandwidthUpBytes} ↓{bandwidthDownBytes}",
+        "format-disconnected": "⚠ Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "interval": 3
+    },
     "pulseaudio": {
         // "scroll-step": 1,
         "format": "{icon} {volume}%",
-        "format-bluetooth": " {volume}%",
-        "format-bluetooth-muted": " Silent",
+        "format-bluetooth": "🔊 {volume}%",
+        "format-bluetooth-muted": "🔊 Silent",
         "format-muted": "🔇 Silent",
         "format-source": "Vol {volume}%",
         "format-source-muted": "Silent",
@@ -55,7 +70,7 @@
     // wlogout renders its own dropdown; add "custom/power" to a host's
     // modules-right to show it.
     "custom/power": {
-        "format": "⏻",
+        "format": "  ⏻  ",
         "on-click": "wlogout",
         "tooltip": false
     },

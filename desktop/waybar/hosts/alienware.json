@@ -4,12 +4,13 @@
     // Waybar keeps the main config's definition over includes, so module lists and
     // any module below must be defined ONLY here, not in ../config.
     // No custom/kanata (Reform-only) and no wofi.css (only exists on the Reform).
+    "output": "eDP-1",
     "modules-left": ["custom/run", "wlr/taskbar", "sway/workspaces"],
     "modules-center": [],
-    "modules-right": ["pulseaudio", "tray", "battery", "clock", "custom/power"],
+    "modules-right": ["network", "cpu", "memory", "pulseaudio", "tray", "battery", "clock", "custom/power"],
     "custom/run": {
-        "format": "M",
-        "exec": "printf 'M\nApplications\n'",
+        "format": "  ≡",
+        "exec": "printf '≡\nApplications\n'",
         "interval": 3600,
         "on-click": "wofi --show drun -p 'Type to search and press enter.' -n -i -I -W 66% -H 66% -l top_left"
     }

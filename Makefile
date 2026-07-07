@@ -81,7 +81,7 @@ setup-kanata-root-part:
 	usermod -aG input vinh
 	cp keyboards/kanata/99-uinput.rules /etc/udev/rules.d/
 	cp keyboards/kanata/uinput.conf /etc/modules-load.d/
-	ln -sf /home/vinh/.cargo/bin/kanata /usr/bin/kanata
+	ln -sfn /home/vinh/.cargo/bin/kanata /usr/bin/kanata
 
 
 ##########
@@ -172,7 +172,7 @@ install-luals:
 ##############
 setup-alacritty:
 	mkdir -p ~/.config/alacritty
-	ln -sf $(shell pwd)/alacritty.toml ~/.config/alacritty/alacritty.toml
+	ln -sfn $(shell pwd)/alacritty.toml ~/.config/alacritty/alacritty.toml
 
 setup-fish:
 	rm -rf ~/.config/fish
@@ -190,17 +190,17 @@ setup-fdfind:
 	ln -s $(shell pwd)/fdignore ~/.fdignore
 
 setup-git:
-	ln -sf $(shell pwd)/gitconfig ~/.gitconfig
+	ln -sfn $(shell pwd)/gitconfig ~/.gitconfig
 	mkdir -p ~/.config
 	rm -rf ~/.config/gitui
 	ln -s $(shell pwd)/gitui ~/.config
 
 setup-kanata:
-	ln -sf $(shell pwd)/keyboards/kanata ~/.config/kanata
+	ln -sfn $(shell pwd)/keyboards/kanata ~/.config/kanata
 
 setup-ipython:
 	ipython profile create
-	ln -sf $(shell pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+	ln -sfn $(shell pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 
 setup-nvim:
 	mkdir -p ~/.config
@@ -216,17 +216,17 @@ setup-sway-waybar:
 	mkdir -p ~/.config/waybar
 	mkdir -p ~/.config/dunst
 	mkdir -p ~/.config/gtk-3.0
-	ln -sf $(shell pwd)/desktop/sway/config ~/.config/sway/config
-	ln -sf $(shell pwd)/desktop/sway/scripts ~/.config/sway/scripts
-	ln -sf $(shell pwd)/desktop/waybar/config ~/.config/waybar/config
-	ln -sf $(shell pwd)/desktop/dunst/dunstrc ~/.config/dunst/dunstrc
-	ln -sf $(shell pwd)/desktop/gtk/gtk.css ~/.config/gtk-3.0/gtk.css
+	ln -sfn $(shell pwd)/desktop/sway/config ~/.config/sway/config
+	ln -sfn $(shell pwd)/desktop/sway/scripts ~/.config/sway/scripts
+	ln -sfn $(shell pwd)/desktop/waybar/config ~/.config/waybar/config
+	ln -sfn $(shell pwd)/desktop/dunst/dunstrc ~/.config/dunst/dunstrc
+	ln -sfn $(shell pwd)/desktop/gtk/gtk.css ~/.config/gtk-3.0/gtk.css
 
 setup-reform: setup-sway-waybar
 	mkdir -p ~/.config/sway/config.d
 	mkdir -p ~/.config/waybar/config.d
-	ln -sf $(shell pwd)/desktop/sway/hosts/reform.conf ~/.config/sway/config.d/local.conf
-	ln -sf $(shell pwd)/desktop/waybar/hosts/reform.json ~/.config/waybar/config.d/local.json
+	ln -sfn $(shell pwd)/desktop/sway/hosts/reform.conf ~/.config/sway/config.d/local.conf
+	ln -sfn $(shell pwd)/desktop/waybar/hosts/reform.json ~/.config/waybar/config.d/local.json
 	swaymsg reload 2>/dev/null || true
 
 # Alienware external monitor differs by location (see ~/.screenlayout/{home,work}.sh),
@@ -237,22 +237,22 @@ setup-reform: setup-sway-waybar
 setup-alienware-home: setup-sway-waybar
 	mkdir -p ~/.config/sway/config.d
 	mkdir -p ~/.config/waybar/config.d
-	ln -sf $(shell pwd)/desktop/sway/hosts/alienware-home.conf ~/.config/sway/config.d/local.conf
-	ln -sf $(shell pwd)/desktop/waybar/hosts/alienware.json ~/.config/waybar/config.d/local.json
+	ln -sfn $(shell pwd)/desktop/sway/hosts/alienware-home.conf ~/.config/sway/config.d/local.conf
+	ln -sfn $(shell pwd)/desktop/waybar/hosts/alienware.json ~/.config/waybar/config.d/local.json
 	swaymsg reload 2>/dev/null || true
 
 setup-alienware-work: setup-sway-waybar
 	mkdir -p ~/.config/sway/config.d
 	mkdir -p ~/.config/waybar/config.d
-	ln -sf $(shell pwd)/desktop/sway/hosts/alienware-work.conf ~/.config/sway/config.d/local.conf
-	ln -sf $(shell pwd)/desktop/waybar/hosts/alienware.json ~/.config/waybar/config.d/local.json
+	ln -sfn $(shell pwd)/desktop/sway/hosts/alienware-work.conf ~/.config/sway/config.d/local.conf
+	ln -sfn $(shell pwd)/desktop/waybar/hosts/alienware.json ~/.config/waybar/config.d/local.json
 	swaymsg reload 2>/dev/null || true
 
 setup-i3:
 	mkdir -p ~/.config/i3
-	ln -sf $(shell pwd)/desktop/i3/config ~/.config/i3/config
+	ln -sfn $(shell pwd)/desktop/i3/config ~/.config/i3/config
 	rm -Rf ~/.config/polybar
-	ln -sf $(shell pwd)/desktop/polybar ~/.config/polybar
+	ln -sfn $(shell pwd)/desktop/polybar ~/.config/polybar
 
 setup-zellij:
 	rm -rf ~/.config/zellij
