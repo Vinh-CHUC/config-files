@@ -15,6 +15,9 @@
     "height": 32, // Waybar height (to be removed for auto height)
     "sway/window": {
     },
+    "sway/workspaces": {
+        "all-outputs": true
+    },
     "wlr/taskbar": {
         "format": "{icon}",
         "icon-theme": "Papirus",
