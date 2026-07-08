@@ -68,7 +68,7 @@ include ~/.config/sway/config.d/*
 # Read `man 5 sway-input` for more information about this section.
 #
 
-default_border pixel 3
+default_border normal
 hide_edge_borders both
 
 ####################
