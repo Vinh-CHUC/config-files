@@ -189,11 +189,11 @@ setup-fdfind:
 	ln -s $(which fdfind) ~/.local/bin/fd
 	ln -s $(shell pwd)/fdignore ~/.fdignore
 
-setup-git:
+setup-vcs:
 	ln -sfn $(shell pwd)/gitconfig ~/.gitconfig
-	mkdir -p ~/.config
-	rm -rf ~/.config/gitui
-	ln -s $(shell pwd)/gitui ~/.config
+	mkdir -p ~/.config/jj
+	ln -sfn $(shell pwd)/gitui ~/.config/gitui
+	ln -sfn $(shell pwd)/jj.toml ~/.config/jj/config.toml
 
 setup-kanata:
 	ln -sfn $(shell pwd)/keyboards/kanata ~/.config/kanata
