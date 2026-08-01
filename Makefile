@@ -24,6 +24,7 @@ install-osx-cpp:
 ###########
 install-linux-cargo-pkgs:
 	cargo install -f --locked gitui kanata zellij zoxide
+	cargo binstall --strategies crate-meta-data jj-cli
 
 install-linux-starship:
 	curl -sS https://starship.rs/install.sh | sh
@@ -129,6 +130,8 @@ install-osx-idris2:
 ##########
 install-rustup:
 	curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
+install-cargo-binstall:
+	curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 install-rust-analyzer:
 	rustup component add rust-analyzer
 
