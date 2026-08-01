@@ -25,6 +25,8 @@ if status is-interactive
 
     direnv hook fish | source
 
+    COMPLETE=fish jj | source
+
     # Abbreviations
     abbr gsf 'git st --porcelain | fzf'
     abbr glf "git log --pretty=format:'%h %an %ad %s' --date=short | fzf"
