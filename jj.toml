@@ -1,0 +1,8 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+[user]
+name = "Vinh Chuc"
+email = "vinh.chuc@gmail.com"
+
+[ui]
+editor = "nvim"
+default-command = ["log", "-r", "present(@) | ancestors(trunk(), 5)::"]
