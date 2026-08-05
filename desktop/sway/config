@@ -255,6 +255,14 @@ client.background       #ffffff
 
 for_window [app_id="pavucontrol"] floating enable
 
+# Autostart/workspace-layout rules are host-specific — see hosts/*.conf
+# (loaded early via config.d/local.conf, included near the top of this file).
+# Layout differs enough per machine (which apps, terminal counts, Obsidian
+# vaults) that a single shared block with runtime guards doesn't fit; each
+# host's for_window destinations are static now, decided once at
+# `make setup-*` time rather than re-derived from a directory check on every
+# login.
+
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
 exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP=sway
 
