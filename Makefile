@@ -147,6 +147,7 @@ install-mise:
 	mise use -g bazelisk@latest
 	mise use -g node@latest
 	mise use -g opencode@latest
+	mise use -g go@latest
 	mise use -g ast-grep
 
 ##########
