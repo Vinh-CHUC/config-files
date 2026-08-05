@@ -73,7 +73,24 @@ return {
     'nanozuki/tabby.nvim',
 
     'neovim/nvim-lspconfig',
-
+    {
+        "nicolasgb/jj.nvim",
+        version = "*", -- Use latest stable release
+        -- Or from the main branch (uncomment the branch line and comment the version line)
+        -- branch = "main",
+        config = function()
+            require("jj").setup({
+                  diff = {
+                    -- Default backend for viewing diffs
+                    -- "native" - Built-in split diff using Neovim's diff mode (default)
+                    -- "diffview" - Use diffview.nvim plugin (requires diffview.nvim)
+                    -- "codediff" - Use codediff.nvim plugin (requires codediff.nvim)
+                    -- Or any custom backend name you've registered
+                    backend = "diffview",
+                  },
+            })
+        end,
+    },
 
     'nvimtools/none-ls.nvim',
     'nvim-lua/plenary.nvim',
