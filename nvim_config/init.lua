@@ -268,7 +268,7 @@ vim.lsp.config("clangd", {
       "--clang-tidy=false",
       "--completion-style=detailed",
       "--pch-storage=memory",
-      "-j=4",
+      "-j=8",
       "--limit-results=50"
     },
     capabilities = capabilities

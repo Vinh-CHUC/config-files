@@ -211,6 +211,10 @@ setup-nvim:
 	rm -rf ~/.config/nvim
 	ln -s $(shell pwd)/nvim_config ~/.config/nvim
 
+setup-clangd:
+	mkdir -p ~/.config/clangd
+	ln -sfn $(shell pwd)/lsp_configs/clangd.yaml ~/.config/clangd/config.yaml
+
 setup-starship:
 	rm -rf ~/.config/starship.toml
 	ln -s $(shell pwd)/starship.toml ~/.config/

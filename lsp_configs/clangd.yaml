@@ -1,0 +1,7 @@
+# Skip background indexing of third-party / system sources (Bazel external/, /usr).
+# Headers still get indexed via project TUs that include them.
+# Re-include a lib: .*/external/(?!yaml-cpp).*
+If:
+  PathMatch: [.*/external/.*, /usr/.*]
+Index:
+  Background: Skip
