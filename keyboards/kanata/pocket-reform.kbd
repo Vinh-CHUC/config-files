@@ -1,6 +1,6 @@
 (defcfg
   linux-dev-names-include (
-    "MNT Pocket Reform Input 1.0 Keyboard"
+    "MNT Pocket Reform Input 2.0 Keyboard"
   )
   concurrent-tap-hold yes
 )
