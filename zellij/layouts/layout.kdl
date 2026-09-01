@@ -3,31 +3,105 @@ layout {
         pane size=1 borderless=true {
             plugin location="tab-bar"
         }
-        pane split_direction="vertical" {
-            pane size="70%"
-            pane size="30%"
-            children
-        }
+        children
         pane size=1 borderless=true {
             plugin location="status-bar"
         }
+    }
+    tab name="C++/Bazel" split_direction="vertical" {
+        pane stacked=true size="70%" {
+            pane cwd="sandbox/languages/cpp/playground" 
+            pane cwd="sandbox/bazel"
+        }
+        pane stacked=true size="30%" {
+            pane cwd="sandbox/languages/cpp/playground" 
+            pane cwd="sandbox/bazel"
+        }
         floating_panes {
-            pane name="gitui" width="68%" height="68%" x="8%"  y="8%"
-            pane name="git"   width="68%" height="68%" x="13%" y="13%"
-            pane              width="68%" height="68%" x="18%" y="18%"
-            pane              width="68%" height="68%" x="23%" y="23%"
+            pane cwd="sandbox/languages/cpp/playground" width="68%" height="68%" x="8%"  y="8%"
+            pane cwd="sandbox/languages/cpp/playground" width="68%" height="68%" x="13%" y="13%"
+            pane cwd="sandbox/bazel" width="68%" height="68%" x="18%" y="18%"
+            pane cwd="sandbox/bazel" width="68%" height="68%" x="23%" y="23%"
         }
     }
-    tab name="C++ Playground" cwd="sandbox/languages/cpp/playground"
-    tab name="Bazel Playground" cwd="sandbox/bazel"
-    tab name="Rust Playground" cwd="sandbox/languages/rust"
-    tab name="Python Playground" cwd="sandbox/languages/python/playground"
-    tab name="Lean4 Playground" cwd="sandbox/languages/lean4/playground"
-    tab name="AI Agents" cwd="motif"
-    tab name="config-files" cwd="config-files"
-    tab name="Obsidian" cwd="../Documents/Personal"
-    tab name="Lua Playground" cwd="sandbox/languages/lua"
-    tab name="Haskell Playground" cwd="sandbox/languages/haskell/haskell-playground"
-    tab name="Cloud Playground" cwd="sandbox/cloud"
-    tab name="Dagster Playground" cwd="sandbox/languages/python/dagster_playground"
+    tab name="Rust & Distributed Systems" split_direction="vertical" {
+        pane stacked=true size="70%" {
+            pane cwd="sandbox/languages/rust" 
+            pane cwd="sandbox/languages/tlaplus"
+        }
+        pane stacked=true size="30%" {
+            pane cwd="sandbox/languages/rust" 
+            pane cwd="sandbox/languages/tlaplus"
+        }
+        floating_panes {
+            pane cwd="sandbox/languages/rust" width="68%" height="68%" x="8%"  y="8%"
+            pane cwd="sandbox/languages/rust" width="68%" height="68%" x="13%" y="13%"
+            pane cwd="sandbox/languages/tlaplus" width="68%" height="68%" x="18%" y="18%"
+            pane cwd="sandbox/languages/tlaplus" width="68%" height="68%" x="23%" y="23%"
+        }
+    }
+    tab name="Frontend" cwd="sandbox/languages/typescript" split_direction="vertical" {
+        pane stacked=true size="70%" {
+            pane
+        }
+        pane stacked=true size="30%" {
+            pane
+        }
+        floating_panes {
+            pane width="68%" height="68%" x="8%"  y="8%"
+            pane width="68%" height="68%" x="13%" y="13%"
+            pane width="68%" height="68%" x="18%" y="18%"
+            pane width="68%" height="68%" x="23%" y="23%"
+        }
+    }
+    tab name="Python/Data/Cloud" split_direction="vertical" {
+        pane stacked=true size="70%" {
+            pane cwd="sandbox/languages/python/playground" 
+            pane cwd="sandbox/languages/python/dagster_playground"
+            pane cwd="sandbox/cloud"
+        }
+        pane stacked=true size="30%" {
+            pane cwd="sandbox/languages/python/playground" 
+            pane cwd="sandbox/languages/python/dagster_playground"
+            pane cwd="sandbox/cloud"
+        }
+        floating_panes {
+            pane cwd="sandbox/languages/python/playground" width="68%" height="68%" x="8%"  y="8%"
+            pane cwd="sandbox/languages/python/playground" cwd="sandbox/languages/python/playground" width="68%" height="68%" x="13%" y="13%"
+            pane cwd="sandbox/languages/python/dagster_playground" width="68%" height="68%" x="18%" y="18%"
+            pane cwd="sandbox/languages/cloud" width="68%" height="68%" x="23%" y="23%"
+        }
+    }
+    tab name="Lean4/Haskell" split_direction="vertical" {
+        pane stacked=true size="70%" {
+            pane cwd="sandbox/languages/lean4/playground" 
+            pane cwd="sandbox/languages/haskell/haskell-playground"
+        }
+        pane stacked=true size="30%" {
+            pane cwd="sandbox/languages/lean4/playground" 
+            pane cwd="sandbox/languages/haskell/haskell-playground"
+        }
+        floating_panes {
+            pane cwd="sandbox/languages/lean4/playground" width="68%" height="68%" x="8%"  y="8%"
+            pane cwd="sandbox/languages/lean4/playground" width="68%" height="68%" x="13%" y="13%"
+            pane cwd="sandbox/languages/haskell/haskell-playground" width="68%" height="68%" x="18%" y="18%"
+            pane cwd="sandbox/languages/haskell/haskell-playground" width="68%" height="68%" x="23%" y="23%"
+        }
+    }
+    tab name="config-files" split_direction="vertical" {
+        pane stacked=true size="70%" {
+            pane cwd="config-files" 
+            pane cwd="motif"
+        }
+        pane stacked=true size="30%" {
+            pane cwd="config-files" 
+            pane cwd="motif"
+        }
+        floating_panes {
+            pane cwd="config-files" width="68%" height="68%" x="8%"  y="8%"
+            pane cwd="config-files" width="68%" height="68%" x="13%" y="13%"
+            pane cwd="motif" width="68%" height="68%" x="18%" y="18%"
+            pane cwd="motif" width="68%" height="68%" x="23%" y="23%"
+        }
+    }
 }
