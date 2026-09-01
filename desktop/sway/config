@@ -281,8 +281,9 @@ exec lxpolkit
 # start network manager applet
 exec nm-applet --indicator
 
-# start bluetooth applet
-exec blueman-applet
+# start bluetooth applet (wait up to 30s for waybar's StatusNotifierWatcher
+# so the tray icon actually has a host to attach to)
+exec --no-startup-id bash -c 'for i in $(seq 30); do dbus-send --session --dest=org.freedesktop.DBus --type=method_call --print-reply /org/freedesktop/DBus org.freedesktop.DBus.ListNames 2>/dev/null | grep -q StatusNotifierWatcher && break; sleep 1; done; exec blueman-applet'
 
 # Notification daemon: dunst (see desktop/dunst/dunstrc), not exec'd here — it's
 # D-Bus-activated on demand (works the same way under i3), no explicit start needed.
