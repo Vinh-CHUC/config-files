@@ -135,9 +135,9 @@ install-cargo-binstall:
 install-rust-analyzer:
 	rustup component add rust-analyzer
 
-##########
-## Node ##
-##########
+##########################
+## Node & npm & TS & .. ##
+##########################
 install-mise:
 	curl https://mise.run | sh
 	mkdir -p ~/.config/mise
