@@ -5,4 +5,15 @@ email = "vinh.chuc@gmail.com"
 
 [ui]
 editor = "nvim"
-default-command = ["log", "-r", "ancestors(present(@), 3) | descendants(fork_point(trunk() | present(@))::present(@), 5) | tracked_remote_bookmarks()"]
+default-command = [
+  "log",
+  "-r",
+  '''
+  ancestors(present(@), 3)
+  | (
+      descendants(fork_point(trunk() | present(@))::present(@), 5)
+      & author_email(substring:"vinh.chuc")
+    )
+  | tracked_remote_bookmarks()
+  ''',
+]
