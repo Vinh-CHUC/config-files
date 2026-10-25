@@ -16,6 +16,16 @@ return {
                 ["<C-v>"] = "open_vsplit",
                 ["<C-t>"] = "open_tabnew",
                 ["s"] = function() require("flash").jump() end,
+                -- On "(n hidden items)" toggle hidden items (globally), otherwise open as usual
+                ["<cr>"] = function(state) ---@param state neotree.sources.filesystem.StateWithTree
+                    local commands = require("neo-tree.sources.filesystem.commands")
+                    local node = state.tree:get_node()
+                    if node.type == "message" and node.name:find("hidden item") then
+                        commands.toggle_hidden(state)
+                    else
+                        commands.open(state)
+                    end
+                end,
             },
         },
         filesystem = {
