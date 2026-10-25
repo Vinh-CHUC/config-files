@@ -28,19 +28,35 @@ telescope.setup {
             -- layout_config = { mirror=true }, -- mirror preview pane
         }
     },
-    pickers = {
-        find_files = {
-            find_command = {
-                "fd", "--type", "file", "--hidden", "--no-ignore",
-                "--ignore-file", os.getenv("HOME") .. "/.fdignore"
-            }
-        },
-    }
 }
 telescope.load_extension("fzf")
 telescope.load_extension("live_grep_args")
 
-vim.keymap.set("n", "<C-p>", ":Telescope find_files<cr>", {remap = false})
+local fd_all = {
+    "fd", "--type", "file", "--hidden", "--no-ignore",
+    "--ignore-file", os.getenv("HOME") .. "/.fdignore"
+}
+local fd_respect_ignore = { "fd", "--type", "file" }
+
+-- <leader>h toggles between all files and respecting .gitignore/hidden, keeping the prompt
+local function find_files(show_all, prompt)
+    require("telescope.builtin").find_files {
+        find_command = show_all and fd_all or fd_respect_ignore,
+        prompt_title = (show_all and "Find Files (all)" or "Find Files (respect ignore)")
+            .. "  [" .. vim.g.mapleader .. "h: toggle]",
+        default_text = prompt,
+        attach_mappings = function(_, map)
+            map({ "i", "n" }, "<leader>h", function(prompt_bufnr)
+                local text = require("telescope.actions.state").get_current_line()
+                actions.close(prompt_bufnr)
+                find_files(not show_all, text)
+            end)
+            return true
+        end,
+    }
+end
+
+vim.keymap.set("n", "<C-p>", function() find_files(true) end, {remap = false})
 vim.keymap.set("n", "<leader>fr", ":Telescope lsp_references<cr>", {remap = false})
 vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set("n", "<leader>fb", ":Telescope buffers<cr>", {remap = false})
