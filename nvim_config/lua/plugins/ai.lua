@@ -48,7 +48,7 @@ return {
 
     {
         "nickjvandyke/opencode.nvim",
-        version = "*", -- Latest stable release
+        -- No `version`: tracks "main", which supports OpenCode v2 (stable releases are v1-only)
         dependencies = {
             {
                 -- `snacks.nvim` integration is recommended, but optional
@@ -56,10 +56,20 @@ return {
                 "folke/snacks.nvim",
                 optional = true,
                 opts = {
-                    input = {}, -- Enhances `ask()`
-                    picker = { -- Enhances `select()`
+                    input = {
+                        enabled = true, -- Enhances Ask
+                    },
+                    picker = {
+                        enabled = true, -- Enhances Select
                         actions = {
-                            opencode_send = function(...) return require("opencode").snacks_picker_send(...) end,
+                            opencode_send = function(picker) ---@param picker snacks.Picker
+                                local items = vim.tbl_map(function(item) ---@param item snacks.picker.Item
+                                    return item.file
+                                        and require("opencode").format({ path = item.file, from = item.pos, to = item.end_pos })
+                                        or item.text
+                                end, picker:selected({ fallback = true }))
+                                require("opencode").prompt(table.concat(items, ", ") .. " ")
+                            end,
                         },
                         win = {
                             input = {
@@ -73,7 +83,14 @@ return {
             },
         },
         config = function()
-            vim.o.autoread = true -- Required for `vim.g.opencode_opts.events.reload`
+            local opencode_cmd = 'opencode'
+            ---@type snacks.terminal.Opts
+            local snacks_terminal_opts = {
+                win = {
+                    position = 'right',
+                    enter = false,
+                },
+            }
             ---@type opencode.Opts
             vim.g.opencode_opts = {
                 server = {
@@ -82,21 +99,13 @@ return {
                     end,
                 },
             }
-            local opencode_cmd = 'opencode --port'
-            ---@type snacks.terminal.Opts
-            local snacks_terminal_opts = {
-                win = {
-                    position = 'right',
-                    enter = false,
-                },
-            }
 
             vim.keymap.set(
                 { "n", "x" },
                 "<leader>os",
                 function()
                     local suffix = vim.fn.mode() == "n" and "_" or ""
-                    return require("opencode").operator("@this ") .. suffix
+                    return require("opencode").operator("@this") .. suffix
                 end,
                 { desc = "Send to OpenCode", expr = true }
             )
@@ -116,17 +125,13 @@ return {
                 { desc = 'Toggle OpenCode' }
             )
 
-            -- Optionally show upon submitting prompt
+            -- Show the terminal when OpenCode starts executing
             vim.api.nvim_create_autocmd('User', {
-                pattern = { 'OpencodeEvent:tui.command.execute' },
-                callback = function(args)
-                    ---@type opencode.server.Event
-                    local event = args.data.event
-                    if event.properties.command == 'prompt.submit' then
-                        local win = require('snacks.terminal').get(opencode_cmd, { create = false })
-                        if win then
-                            win:show()
-                        end
+                pattern = { 'OpencodeEvent:session.execution.started' },
+                callback = function()
+                    local win = require('snacks.terminal').get(opencode_cmd, { create = false })
+                    if win then
+                        win:show()
                     end
                 end,
             })
